@@ -1,7 +1,7 @@
 ---
 # Kaynak: AVESİS proje kaydı. Özet ve açıklamayı proje ekibi güncelleyebilir.
 title:
-  tr: "Kör Farelerin (Spalax ve Nannospalax) Tüm Yayılış Alanında Tüm Genom Kapsamında Türleşmelerinin ve Adaptif Yayılışının Filogenetik Tarihi"
+  tr: "Körfarelerin (Spalax ve Nannospalax) Tüm Yayılış Alanında Tüm Genom Kapsamında Türleşmelerinin ve Adaptif Yayılışının Filogenetik Tarihi"
   en: "Genome-wide phylogenetic history of speciation and adaptive radiation of blind mole rats (Spalax and Nannospalax) across their entire range"
 status: "completed"
 years: "2020–2023"

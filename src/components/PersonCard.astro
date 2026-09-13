@@ -24,7 +24,14 @@ const interests = tList(data.interests, lang).slice(0, 3);
   <div>
     <h3><a href={href}>{data.name}</a></h3>
     <p class="subtitle">{subtitle}</p>
-    {projects.map((p) => <p class="project">{t(p.data.title, lang)}</p>)}
+    {
+      projects.map((p) => (
+        <p class="project">
+          {p.data.fellows.some((f) => f.id === person.id) && <span class="fellow">{s.fellow}</span>}
+          {t(p.data.title, lang)}
+        </p>
+      ))
+    }
     {interests.length > 0 && <p class="interests">{interests.join(' · ')}</p>}
   </div>
 </article>
@@ -74,6 +81,16 @@ const interests = tList(data.interests, lang).slice(0, 3);
     margin-top: 0.6rem;
     padding-left: 0.7rem;
     border-left: 2px solid var(--accent-soft);
+  }
+  .fellow {
+    display: block;
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.15rem;
   }
   .interests {
     font-size: 0.8rem;

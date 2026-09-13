@@ -27,6 +27,7 @@ funding:
 lead: "Prof. Dr. Ferhat Matur"
 collaborators: ["İ. M. A. Öktem", "F. Doğruman Al", "E. Keskin", "U. Eliiyi"]
 members: [ferhat-matur, yagmur-gursoy]
+fellows: [yagmur-gursoy]   # bursiyerler
 tags:
   tr: ["Tek Sağlık", "Metagenomik", "Zoonoz"]
   en: ["One Health", "Metagenomics", "Zoonoses"]

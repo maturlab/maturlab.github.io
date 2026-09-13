@@ -1,6 +1,6 @@
 ---
 name: Nisa Dalar
-role: bsc   # phd | msc | grad (lisansüstü) | bsc | alumni
+role: bsc   # phd | msc | bsc | alumni
 # photo: ./fotograflar/nisa-dalar.jpg
 # email: ad.soyad@ogr.deu.edu.tr
 citationNames: []   # yayınlarda adı nasıl geçiyor, ör. ["Arslan ÖF"]

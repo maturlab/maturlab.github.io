@@ -1,6 +1,6 @@
 ---
 name: Nurullah Alkan
-role: grad   # phd | msc | grad (lisansüstü) | bsc | alumni
+role: msc   # phd | msc | bsc | alumni
 # photo: ./fotograflar/nurullah-alkan.jpg
 # email: ad.soyad@ogr.deu.edu.tr
 citationNames: []   # yayınlarda adı nasıl geçiyor, ör. ["Arslan ÖF"]

@@ -39,7 +39,10 @@ const href = url(`${routes[lang].projects}/${project.id}`);
             {students.map((m) => (
               <li>
                 <Avatar name={m.data.name} photo={m.data.photo} size={26} />
-                <span>{m.data.name}</span>
+                <span>
+                  {m.data.name}
+                  {data.fellows.some((f) => f.id === m.id) && <small>{s.fellow}</small>}
+                </span>
               </li>
             ))}
           </ul>
@@ -138,6 +141,12 @@ const href = url(`${routes[lang].projects}/${project.id}`);
     font-size: 0.58rem;
     font-family: var(--sans);
     font-weight: 600;
+  }
+  .members small {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--muted);
   }
   .funding {
     font-size: 0.75rem;

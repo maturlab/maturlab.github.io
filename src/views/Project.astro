@@ -84,7 +84,11 @@ const altLang = lang === 'tr' ? 'en' : 'tr';
                       <Avatar name={m.data.name} photo={m.data.photo} size={44} />
                       <span>
                         <strong>{m.data.name}</strong>
-                        <small>{m.data.title ? t(m.data.title, lang) : s.roleSingle[m.data.role]}</small>
+                        <small>
+                          {data.lead === m.data.name
+                            ? s.lead
+                            : [s.roleSingle[m.data.role], data.fellows.some((f) => f.id === m.id) && s.fellow].filter(Boolean).join(' · ')}
+                        </small>
                       </span>
                     </a>
                   </li>

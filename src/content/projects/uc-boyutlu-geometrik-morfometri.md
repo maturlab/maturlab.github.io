@@ -4,11 +4,11 @@ title:
   tr: "Üç Boyutlu Geometrik Morfometri Kullanarak Nannospalax sp.’de Morfolojik ve Kromozomal Evrim Arasındaki İlişkinin İzlenmesi"
   en: "Tracing the relationship between morphological and chromosomal evolution in Nannospalax sp. using three-dimensional geometric morphometrics"
 summary:
-  tr: "Kör farelerde kromozomal farklılaşmanın morfolojik evrimle nasıl ilişkili olduğunu üç boyutlu geometrik morfometri yöntemleriyle inceliyoruz."
+  tr: "Körfarelerde kromozomal farklılaşmanın morfolojik evrimle nasıl ilişkili olduğunu üç boyutlu geometrik morfometri yöntemleriyle inceliyoruz."
   en: "Using three-dimensional geometric morphometrics to examine how chromosomal divergence relates to morphological evolution in blind mole rats."
 description:
   tr: |
-    Anadolu kör fareleri (Nannospalax), kromozom sayısı ve yapısı bakımından birbirinden farklı çok sayıda sitotiple temsil edilir. Bu proje, sitotipler arasındaki kromozomal farklılıkların morfolojik değişimle paralel ilerleyip ilerlemediğini sorgular.
+    Anadolu körfareleri (Nannospalax), kromozom sayısı ve yapısı bakımından birbirinden farklı çok sayıda sitotiple temsil edilir. Bu proje, sitotipler arasındaki kromozomal farklılıkların morfolojik değişimle paralel ilerleyip ilerlemediğini sorgular.
 
     Örneklerin üç boyutlu dijital modelleri üzerinde işaret noktası (landmark) tabanlı şekil analizleri yapılarak morfolojik ve kromozomal evrim arasındaki ilişki karşılaştırmalı olarak değerlendirilir. Proje, TÜBİTAK’ın Sırbistan ile ikili işbirliği programı kapsamında yürütülmektedir.
   en: |
@@ -23,6 +23,7 @@ funding:
 lead: "Prof. Dr. Ferhat Matur"
 collaborators: ["M. Sözen", "A. Yanchukov"]
 members: [ferhat-matur, omer-faruk-arslan]
+fellows: [omer-faruk-arslan]   # bursiyerler
 tags:
   tr: ["Geometrik morfometri", "Kromozomal evrim", "Nannospalax"]
   en: ["Geometric morphometrics", "Chromosomal evolution", "Nannospalax"]

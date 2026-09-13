@@ -4,11 +4,11 @@ title:
   tr: "Körfarelerde Kohezin ve Kondensin Genlerine Olan Seleksiyon Baskısının Araştırılması"
   en: "Investigating selection pressure on cohesin and condensin genes in blind mole rats"
 summary:
-  tr: "Kromozomların düzenlenmesinden sorumlu kohezin ve kondensin genlerinin, kromozomal açıdan son derece çeşitli kör farelerde nasıl bir seleksiyon baskısı altında olduğunu araştırıyoruz."
+  tr: "Kromozomların düzenlenmesinden sorumlu kohezin ve kondensin genlerinin, kromozomal açıdan son derece çeşitli körfarelerde nasıl bir seleksiyon baskısı altında olduğunu araştırıyoruz."
   en: "Investigating the selection pressure acting on cohesin and condensin genes, which organise chromosomes, in chromosomally hyper-diverse blind mole rats."
 description:
   tr: |
-    Kohezin ve kondensin, hücre bölünmesi sırasında kromozomların düzenlenmesini ve doğru şekilde ayrılmasını sağlayan protein kompleksleridir. Kör fareler, çok sayıda kromozomal yeniden düzenlenme gösteren sitotipleriyle bu genlerin evrimini incelemek için eşsiz bir model sunar.
+    Kohezin ve kondensin, hücre bölünmesi sırasında kromozomların düzenlenmesini ve doğru şekilde ayrılmasını sağlayan protein kompleksleridir. Körfareler, çok sayıda kromozomal yeniden düzenlenme gösteren sitotipleriyle bu genlerin evrimini incelemek için eşsiz bir model sunar.
 
     Projede bu komplekslere ait genler üzerindeki seleksiyon baskısı karşılaştırmalı genomik ve moleküler evrim yöntemleriyle araştırılmaktadır.
   en: |
@@ -21,6 +21,7 @@ funding: "TÜBİTAK 1001"
 lead: "Prof. Dr. Ferhat Matur"
 collaborators: ["P. Bozaykut Eker", "O. Yanchukov", "S. Baykal Köse"]
 members: [ferhat-matur, basak-esgin]
+fellows: [basak-esgin]   # bursiyerler
 tags:
   tr: ["Moleküler evrim", "Genomik", "Nannospalax"]
   en: ["Molecular evolution", "Genomics", "Nannospalax"]

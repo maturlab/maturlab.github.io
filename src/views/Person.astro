@@ -165,6 +165,7 @@ const links = Object.entries(data.links).filter(([, href]) => href) as [string, 
                   <li>
                     <a href={p.data.summary || p.data.description ? url(`${r.projects}/${p.id}`) : p.data.link}>{t(p.data.title, lang)}</a>
                     <span class="status" data-status={p.data.status}>
+                      {p.data.fellows.some((f) => f.id === person.id) && `${s.fellow} · `}
                       {s.status[p.data.status]} · {p.data.years}
                     </span>
                   </li>

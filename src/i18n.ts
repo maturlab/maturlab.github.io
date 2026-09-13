@@ -48,9 +48,9 @@ export const ui = {
     nav: { projects: 'Projeler', people: 'Ekip', publications: 'Yayınlar', contact: 'İletişim' },
     labFullName: 'Matur Bütünleşik Koruma ve Evrim Laboratuvarı',
     affiliation: 'Dokuz Eylül Üniversitesi · Fen Fakültesi · Biyoloji Bölümü',
-    heroTitle: 'Anadolu’nun küçük memelilerinde evrim, çeşitlilik ve koruma.',
+    heroTitle: 'Memelilerde evrim, çeşitlilik ve koruma.',
     heroText:
-      'Kör fareler (Nannospalax) başta olmak üzere Anadolu’nun kemirgenlerini kromozomdan genoma, sahadan laboratuvara inceliyoruz: türlerin nasıl ortaya çıktığını, çevreye nasıl uyum sağladığını ve taşıdıkları etkenlerin insan ve ekosistem sağlığıyla ilişkisini.',
+      'Körfareler (Nannospalax) başta olmak üzere Anadolu’nun kemirgenlerini kromozomdan genoma, sahadan laboratuvara kadar inceliyoruz. Türlerin nasıl ortaya çıktığını ve çevrelerine nasıl uyum sağladığını araştırıyor, endemik ve nesli tehlike altındaki türlerin korunması için bilimsel temel oluşturuyoruz. Kemirgenlerin taşıdığı etkenlerin insan ve ekosistem sağlığıyla ilişkisini de Tek Sağlık yaklaşımıyla ele alıyoruz.',
     focusTitle: 'Araştırma alanları',
     focus: [
       ['Sitogenetik ve kromozomal evrim', 'Kromozom bantlama ve kromozomal yeniden düzenlenmelerin tür oluşumundaki rolü.'],
@@ -73,6 +73,7 @@ export const ui = {
     funding: 'Destek',
     period: 'Dönem',
     projectTeam: 'Proje ekibi',
+    fellow: 'Bursiyer',
     ongoingProjects: 'Devam eden projeler',
     completedProjects: 'Tamamlanan projeler',
     networks: 'Uluslararası ağlar',
@@ -135,9 +136,9 @@ export const ui = {
     nav: { projects: 'Projects', people: 'People', publications: 'Publications', contact: 'Contact' },
     labFullName: 'Matur Integrated Conservation and Evolution Laboratory',
     affiliation: 'Dokuz Eylül University · Faculty of Science · Department of Biology',
-    heroTitle: 'Evolution, diversity and conservation of Anatolia’s small mammals.',
+    heroTitle: 'Evolution, diversity and conservation in mammals.',
     heroText:
-      'We study Anatolia’s rodents — above all the blind mole rats (Nannospalax) — from chromosomes to genomes and from the field to the lab: how species arise, how they adapt, and how the agents they carry relate to human and ecosystem health.',
+      'We study Anatolia’s rodents, above all blind mole rats (Nannospalax), from chromosomes to genomes and from the field to the lab. We investigate how species arise and adapt to their environments, and build the scientific basis for protecting endemic and threatened species. With a One Health approach, we also study how the agents rodents carry relate to human and ecosystem health.',
     focusTitle: 'Research areas',
     focus: [
       ['Cytogenetics and chromosomal evolution', 'Chromosome banding and the role of chromosomal rearrangements in speciation.'],
@@ -160,6 +161,7 @@ export const ui = {
     funding: 'Funding',
     period: 'Period',
     projectTeam: 'Project team',
+    fellow: 'Research fellow',
     ongoingProjects: 'Ongoing projects',
     completedProjects: 'Completed projects',
     networks: 'International networks',

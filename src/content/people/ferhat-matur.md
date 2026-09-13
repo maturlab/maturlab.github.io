@@ -13,7 +13,7 @@ bio:
   tr: |
     Ferhat Matur, Dokuz Eylül Üniversitesi Fen Fakültesi Biyoloji Bölümü’nde profesör ve Moleküler Biyoloji Anabilim Dalı başkanıdır. 2002–2016 yılları arasında Zonguldak Bülent Ecevit Üniversitesi’nde araştırma görevlisi, yardımcı doçent ve doçent olarak çalıştıktan sonra 2017’de Dokuz Eylül Üniversitesi’ne katılmış, 2020’de profesör olmuştur.
 
-    Çalışmaları Anadolu’nun küçük memelilerinin, özellikle kör farelerin (Nannospalax) sitogenetiği, evrimi, sistematiği ve populasyon genetiği üzerine yoğunlaşır. Kromozomal evrim ve tür oluşumunun yanı sıra endemik türlerin korunması ve kemirgenlerin taşıdığı zoonotik etkenlerin Tek Sağlık yaklaşımıyla incelenmesi de araştırma konuları arasındadır. TÜBİTAK destekli çok sayıda ulusal ve uluslararası projede yürütücü ve araştırmacı olarak görev almıştır.
+    Çalışmaları Anadolu’nun küçük memelilerinin, özellikle körfarelerin (Nannospalax) sitogenetiği, evrimi, sistematiği ve populasyon genetiği üzerine yoğunlaşır. Kromozomal evrim ve tür oluşumunun yanı sıra endemik türlerin korunması ve kemirgenlerin taşıdığı zoonotik etkenlerin Tek Sağlık yaklaşımıyla incelenmesi de araştırma konuları arasındadır. TÜBİTAK destekli çok sayıda ulusal ve uluslararası projede yürütücü ve araştırmacı olarak görev almıştır.
   en: |
     Ferhat Matur is a professor at the Department of Biology, Dokuz Eylül University, where he heads the Division of Molecular Biology. After working as a research assistant, assistant professor and associate professor at Zonguldak Bülent Ecevit University (2002–2016), he joined Dokuz Eylül University in 2017 and became a full professor in 2020.
 
@@ -74,7 +74,7 @@ experience:
 
 awards:
   - title:
-      tr: "YÖK araştırma bursu — Türkiye kör farelerinin moleküler varyasyonları ve moleküler ekolojisi ile Praomys delectorum’un populasyon yapısı ve biyocoğrafyası"
+      tr: "YÖK araştırma bursu — Türkiye körfarelerinin moleküler varyasyonları ve moleküler ekolojisi ile Praomys delectorum’un populasyon yapısı ve biyocoğrafyası"
       en: "Council of Higher Education (YÖK) research fellowship — molecular variation and ecology of Turkish blind mole rats; population structure and biogeography of Praomys delectorum"
     year: 2010–2011
   - title: { tr: BOF Special Funding (yurt dışı kurum bursu), en: BOF Special Funding }

@@ -79,6 +79,7 @@ const projects = defineCollection({
       image: image().optional(),
       imageAlt: text.optional(),
       members: z.array(reference('people')).default([]),
+      fellows: z.array(reference('people')).default([]), // projede bursiyer olan lab üyeleri
       tags: textList.optional(),
       featured: z.boolean().default(false),
       order: z.number().default(100),

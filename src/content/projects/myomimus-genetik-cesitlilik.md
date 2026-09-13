@@ -23,6 +23,7 @@ funding:
 lead: "Prof. Dr. Ferhat Matur"
 collaborators: ["N. Nedyalkov", "A. Karataş", "Ş. Bulut", "B. Özkan", "U. Eliiyi"]
 members: [ferhat-matur, fadime-gencer]
+fellows: [fadime-gencer]   # bursiyerler
 tags:
   tr: ["Koruma genetiği", "ddRADseq", "Myomimus"]
   en: ["Conservation genetics", "ddRADseq", "Myomimus"]

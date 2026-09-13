@@ -1,6 +1,6 @@
 ---
 name: Fadime Gencer
-role: grad   # phd | msc | grad (lisansüstü) | bsc | alumni
+role: phd   # phd | msc | bsc | alumni
 # photo: ./fotograflar/fadime-gencer.jpg
 # email: ad.soyad@ogr.deu.edu.tr
 citationNames: []   # yayınlarda adı nasıl geçiyor, ör. ["Arslan ÖF"]
