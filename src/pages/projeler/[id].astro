@@ -3,7 +3,7 @@ import View from '../../views/Project.astro';
 import { getProjects } from '../../lib/data';
 
 export async function getStaticPaths() {
-  return (await getProjects()).map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+  return (await getProjects()).filter((p) => p.data.summary || p.data.description).map((entry) => ({ params: { id: entry.id }, props: { entry } }));
 }
 
 const { entry } = Astro.props;

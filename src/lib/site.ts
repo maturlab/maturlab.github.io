@@ -1,6 +1,7 @@
 // Laboratuvarın genel iletişim bilgileri. Değiştirmek için sadece bu dosyayı düzenleyin.
 export const site = {
   email: 'ferhat.matur@deu.edu.tr',
+  phone: '+90 232 301 95 42',
   address: {
     tr: [
       'MICE LAB',

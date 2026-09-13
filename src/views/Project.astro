@@ -16,14 +16,14 @@ const s = ui[lang];
 const r = routes[lang];
 const members = (await getEntries(data.members)).filter(Boolean);
 const tags = tList(data.tags, lang);
-const paragraphs = t(data.description, lang).split(/\n\s*\n/).filter(Boolean);
+const paragraphs = t(data.description ?? data.summary, lang).split(/\n\s*\n/).filter(Boolean);
 const altLang = lang === 'tr' ? 'en' : 'tr';
 ---
 
 <Base
   lang={lang}
   title={t(data.title, lang)}
-  description={t(data.summary, lang)}
+  description={t(data.summary ?? data.title, lang)}
   altPath={`${routes[altLang].projects}/${project.id}`}
   current="projects"
 >
@@ -32,7 +32,7 @@ const altLang = lang === 'tr' ? 'en' : 'tr';
       <a class="back" href={url(r.projects)}>{s.backToProjects}</a>
       <span class="status" data-status={data.status}>{s.status[data.status]}</span>
       <h1>{t(data.title, lang)}</h1>
-      <p class="lead">{t(data.summary, lang)}</p>
+      {data.description && data.summary && <p class="lead">{t(data.summary, lang)}</p>}
     </header>
 
     {
@@ -64,6 +64,14 @@ const altLang = lang === 'tr' ? 'en' : 'tr';
               </div>
             )
           }
+          {
+            data.lead && (
+              <div>
+                <dt>{s.lead}</dt>
+                <dd>{data.lead}</dd>
+              </div>
+            )
+          }
         </dl>
         {
           members.length > 0 && (
@@ -85,6 +93,19 @@ const altLang = lang === 'tr' ? 'en' : 'tr';
             </>
           )
         }
+        {
+          data.collaborators.length > 0 && (
+            <>
+              <h2 class="eyebrow">{s.collaborators}</h2>
+              <p class="collab">{data.collaborators.join(', ')}</p>
+            </>
+          )
+        }
+        {data.link && (
+          <a class="arrow-link source" href={data.link} target="_blank" rel="noopener">
+            {s.viewSource}
+          </a>
+        )}
       </aside>
     </div>
   </article>
@@ -155,7 +176,20 @@ const altLang = lang === 'tr' ? 'en' : 'tr';
     margin: 0.15rem 0 0;
   }
   .facts h2 {
-    margin-bottom: 0.75rem;
+    margin: 0 0 0.75rem;
+  }
+  .facts h2 + p,
+  .team + h2 {
+    margin-top: 1.75rem;
+  }
+  .collab {
+    font-size: 0.9rem;
+    color: var(--ink-2);
+    margin: 0 0 1.75rem;
+  }
+  .source {
+    display: inline-block;
+    margin-top: 0.5rem;
   }
   .team {
     list-style: none;

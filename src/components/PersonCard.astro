@@ -6,9 +6,10 @@ import { routes, t, tList, ui, url, type Lang } from '../i18n';
 interface Props {
   person: CollectionEntry<'people'>;
   lang: Lang;
+  projects?: CollectionEntry<'projects'>[];
 }
 
-const { person, lang } = Astro.props;
+const { person, lang, projects = [] } = Astro.props;
 const { data } = person;
 const s = ui[lang];
 const href = url(`${routes[lang].people}/${person.id}`);
@@ -23,6 +24,7 @@ const interests = tList(data.interests, lang).slice(0, 3);
   <div>
     <h3><a href={href}>{data.name}</a></h3>
     <p class="subtitle">{subtitle}</p>
+    {projects.map((p) => <p class="project">{t(p.data.title, lang)}</p>)}
     {interests.length > 0 && <p class="interests">{interests.join(' · ')}</p>}
   </div>
 </article>
@@ -63,6 +65,15 @@ const interests = tList(data.interests, lang).slice(0, 3);
     font-size: 0.875rem;
     color: var(--ink-2);
     margin-top: 0.15rem;
+  }
+  .project {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    line-height: 1.35;
+    color: var(--ink-2);
+    margin-top: 0.6rem;
+    padding-left: 0.7rem;
+    border-left: 2px solid var(--accent-soft);
   }
   .interests {
     font-size: 0.8rem;

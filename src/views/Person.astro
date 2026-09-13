@@ -27,6 +27,8 @@ const labNames = await getLabNames();
 const linkLabels: Record<string, string> = {
   scholar: 'Google Scholar',
   orcid: 'ORCID',
+  scopus: 'Scopus',
+  wos: 'Web of Science',
   researchgate: 'ResearchGate',
   avesis: 'AVESİS',
   linkedin: 'LinkedIn',
@@ -161,7 +163,7 @@ const links = Object.entries(data.links).filter(([, href]) => href) as [string, 
               <ul class="proj">
                 {projects.map((p) => (
                   <li>
-                    <a href={url(`${r.projects}/${p.id}`)}>{t(p.data.title, lang)}</a>
+                    <a href={p.data.summary || p.data.description ? url(`${r.projects}/${p.id}`) : p.data.link}>{t(p.data.title, lang)}</a>
                     <span class="status" data-status={p.data.status}>
                       {s.status[p.data.status]} · {p.data.years}
                     </span>

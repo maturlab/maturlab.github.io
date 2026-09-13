@@ -1,12 +1,32 @@
 # HABERLER — ana sayfada en yeni 4 haber gösterilir.
 # Yeni haberi en üste ekleyin. "url" isteğe bağlıdır.
 
+- id: 2026-rodens-et-spatium
+  date: 2026-05-18
+  text:
+    tr: "18. Rodens et Spatium Uluslararası Kemirgen Biyolojisi Konferansı’na (Kaunas, Litvanya) katıldık."
+    en: "We attended the 18th Rodens et Spatium International Conference on Rodent Biology in Kaunas, Lithuania."
+
 - id: 2026-kor-fare-revizyon
   date: 2026-06-19
   text:
-    tr: "Anadolu kör farelerinin bütünleşik taksonomik revizyonu yayımlandı: 17’si yeni olmak üzere 33 tür tanımlandı."
-    en: "Our integrative taxonomic revision of Anatolian blind mole rats is out: 33 species recognised, 17 of them new."
+    tr: "Anadolu kör farelerinin kromozomal ve bütünleşik taksonomik revizyonu Animal Taxonomy and Ecology dergisinde yayımlandı."
+    en: "Our chromosomal and integrative taxonomic revision of Anatolian blind mole rats was published in Animal Taxonomy and Ecology."
   url: https://doi.org/10.1556/1777.2026.00131
+
+- id: 2026-myomimus-proje
+  date: 2026-03-01
+  text:
+    tr: "Bulgaristan Bilimler Akademisi ile yürüttüğümüz Myomimus projesi başladı (TÜBİTAK 2502)."
+    en: "Our Myomimus project with the Bulgarian Academy of Sciences has started (TÜBİTAK 2502)."
+  url: /projeler/myomimus-genetik-cesitlilik
+
+- id: 2026-blastocystis-proje
+  date: 2026-01-01
+  text:
+    tr: "Tunceli Ovacık’ta Blastocystis’i Tek Sağlık yaklaşımıyla inceleyen projemiz başladı."
+    en: "Our One Health project on Blastocystis in Ovacık, Tunceli has started."
+  url: /projeler/tunceli-ovacik-blastocystis
 
 - id: 2024-tunceli-arazi
   date: 2024-09-02

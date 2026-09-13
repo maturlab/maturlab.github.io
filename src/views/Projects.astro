@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { routes, ui, type Lang } from '../i18n';
+import { routes, t, ui, url, type Lang } from '../i18n';
 import { getProjects } from '../lib/data';
 
 interface Props {
@@ -10,8 +10,14 @@ interface Props {
 
 const { lang } = Astro.props;
 const s = ui[lang];
+const r = routes[lang];
 const projects = await getProjects();
-const count = (status: string) => projects.filter((p) => p.data.status === status).length;
+const ongoing = projects.filter((p) => p.data.kind === 'research' && p.data.status === 'ongoing');
+const networks = projects.filter((p) => p.data.kind === 'network');
+const completed = projects
+  .filter((p) => p.data.kind === 'research' && p.data.status === 'completed')
+  .sort((a, b) => b.data.years.localeCompare(a.data.years));
+const hasPage = (p: (typeof projects)[number]) => Boolean(p.data.description || p.data.summary);
 ---
 
 <Base lang={lang} title={s.nav.projects} altPath={routes[lang === 'tr' ? 'en' : 'tr'].projects} current="projects">
@@ -21,71 +27,150 @@ const count = (status: string) => projects.filter((p) => p.data.status === statu
     <p class="lead">{s.projectsIntro}</p>
   </header>
 
-  <section class="wrap list">
-    <div class="filters" role="group" aria-label="Filtre">
-      <button type="button" data-filter="all" aria-pressed="true">{s.filterAll} <span>{projects.length}</span></button>
-      <button type="button" data-filter="ongoing" aria-pressed="false">{s.status.ongoing} <span>{count('ongoing')}</span></button>
-      <button type="button" data-filter="completed" aria-pressed="false">{s.status.completed} <span>{count('completed')}</span></button>
-    </div>
+  <section class="wrap block">
+    <h2 class="block-title">{s.ongoingProjects} <span>{ongoing.length}</span></h2>
     <div class="grid">
-      {projects.map((project) => <ProjectCard project={project} lang={lang} />)}
+      {ongoing.map((project) => <ProjectCard project={project} lang={lang} />)}
     </div>
   </section>
+
+  {
+    completed.length > 0 && (
+      <section class="wrap block">
+        <h2 class="block-title">
+          {s.completedProjects} <span>{completed.length}</span>
+        </h2>
+        <ul class="rows">
+          {completed.map((p) => {
+            const href = hasPage(p) ? url(`${r.projects}/${p.id}`) : p.data.link;
+            return (
+              <li>
+                <span class="when">{p.data.years}</span>
+                <span class="what">
+                  {href ? (
+                    <a href={href} target={hasPage(p) ? undefined : '_blank'} rel="noopener">
+                      {t(p.data.title, lang)}
+                    </a>
+                  ) : (
+                    t(p.data.title, lang)
+                  )}
+                </span>
+                <span class="who">
+                  {t(p.data.funding, lang)}
+                  {p.data.lead && (
+                    <small>
+                      {s.lead}: {p.data.lead}
+                    </small>
+                  )}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    )
+  }
+  {
+    networks.length > 0 && (
+      <section class="wrap block last">
+        <h2 class="block-title">
+          {s.networks} <span>{networks.length}</span>
+        </h2>
+        <p class="muted intro">{s.networksIntro}</p>
+        <ul class="rows">
+          {networks.map((p) => (
+            <li>
+              <span class="when">{p.data.years}</span>
+              <span class="what">
+                {p.data.link ? (
+                  <a href={p.data.link} target="_blank" rel="noopener">
+                    {t(p.data.title, lang)}
+                  </a>
+                ) : (
+                  t(p.data.title, lang)
+                )}
+              </span>
+              <span class="who">{t(p.data.funding, lang)}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
 </Base>
 
-<script>
-  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
-  const cards = document.querySelectorAll<HTMLElement>('.grid > [data-status]');
-  buttons.forEach((btn) =>
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter;
-      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-      cards.forEach((card) => {
-        card.hidden = filter !== 'all' && card.dataset.status !== filter;
-      });
-    }),
-  );
-</script>
-
 <style>
-  .list {
-    padding-block: 2rem 5rem;
+  .block {
+    padding-block: 3rem 1rem;
   }
-  .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
+  .block.last {
+    padding-bottom: 5rem;
   }
-  .filters button {
-    font: inherit;
-    font-size: 0.875rem;
-    padding: 0.45rem 0.95rem;
-    border-radius: 999px;
-    border: 1px solid var(--line);
-    background: transparent;
-    color: var(--ink-2);
-    cursor: pointer;
+  .block-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.75rem;
   }
-  .filters button span {
-    color: var(--muted);
-    margin-left: 0.25rem;
+  .block-title span {
+    font-family: var(--sans);
     font-size: 0.8rem;
+    color: var(--muted);
+    vertical-align: middle;
+    margin-left: 0.35rem;
   }
-  .filters button[aria-pressed='true'] {
-    background: var(--ink);
-    border-color: var(--ink);
-    color: var(--bg);
-  }
-  .filters button[aria-pressed='true'] span {
-    color: #ffffff99;
+  .intro {
+    margin: -1rem 0 1.25rem;
+    font-size: 0.925rem;
   }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 1.5rem;
   }
-  .grid > [hidden] {
-    display: none;
+  .rows {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--ink);
+  }
+  .rows li {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr) 15rem;
+    gap: 1.5rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .when {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .what {
+    font-family: var(--serif);
+    font-size: 1.08rem;
+    line-height: 1.4;
+  }
+  .what a {
+    text-decoration: none;
+  }
+  .what a:hover {
+    text-decoration: underline;
+  }
+  .who {
+    font-size: 0.8rem;
+    color: var(--ink-2);
+  }
+  .who small {
+    display: block;
+    color: var(--muted);
+    font-size: 0.75rem;
+    margin-top: 0.15rem;
+  }
+  @media (max-width: 820px) {
+    .rows li {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
   }
 </style>

@@ -40,5 +40,7 @@ export async function getPublicationsFor(person: CollectionEntry<'people'>) {
 }
 
 export async function getProjectsFor(person: CollectionEntry<'people'>) {
-  return (await getProjects()).filter((p) => p.data.members.some((m) => m.id === person.id));
+  return (await getProjects()).filter(
+    (p) => p.data.members.some((m) => m.id === person.id) || (person.data.role === 'pi' && p.data.kind === 'research' && p.data.lead === person.data.name),
+  );
 }

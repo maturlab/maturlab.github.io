@@ -17,7 +17,8 @@ const s = ui[lang];
 const r = routes[lang];
 
 const projects = await getProjects();
-const featured = (projects.filter((p) => p.data.featured).length ? projects.filter((p) => p.data.featured) : projects).slice(0, 3);
+const ongoing = projects.filter((p) => p.data.kind === 'research' && p.data.status === 'ongoing');
+const featured = (ongoing.some((p) => p.data.featured) ? ongoing.filter((p) => p.data.featured) : ongoing).slice(0, 4);
 const people = (await getPeople()).filter((p) => p.data.role !== 'alumni');
 const pubs = (await getPublications()).slice(0, 4);
 const labNames = await getLabNames();
@@ -47,7 +48,7 @@ const dateFmt = new Intl.DateTimeFormat(lang === 'tr' ? 'tr-TR' : 'en-GB', { mon
       {
         s.focus.map(([title, text], i) => (
           <li>
-            <span class="num">0{i + 1}</span>
+            <span class="num">{String(i + 1).padStart(2, '0')}</span>
             <h3>{title}</h3>
             <p>{text}</p>
           </li>
@@ -192,8 +193,8 @@ const dateFmt = new Intl.DateTimeFormat(lang === 'tr' ? 'tr-TR' : 'en-GB', { mon
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.25rem 2rem;
   }
   .focus li {
     border-top: 1px solid var(--ink);
@@ -216,8 +217,13 @@ const dateFmt = new Intl.DateTimeFormat(lang === 'tr' ? 'tr-TR' : 'en-GB', { mon
 
   .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
+  }
+  @media (max-width: 760px) {
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   .faces {

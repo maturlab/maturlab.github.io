@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import PersonCard from '../components/PersonCard.astro';
 import Avatar from '../components/Avatar.astro';
 import { roleOrder, routes, t, ui, url, type Lang } from '../i18n';
-import { getPeople } from '../lib/data';
+import { getPeople, getProjects } from '../lib/data';
 
 interface Props {
   lang: Lang;
@@ -13,6 +13,8 @@ const { lang } = Astro.props;
 const s = ui[lang];
 const r = routes[lang];
 const people = await getPeople();
+const allProjects = await getProjects();
+const projectsOf = (id: string) => allProjects.filter((p) => p.data.status === 'ongoing' && p.data.members.some((m) => m.id === id));
 const pis = people.filter((p) => p.data.role === 'pi');
 const groups = roleOrder
   .filter((role) => role !== 'pi')
@@ -57,7 +59,7 @@ const alumni = people.filter((p) => p.data.role === 'alumni');
         </h2>
         <div class="grid">
           {g.members.map((p) => (
-            <PersonCard person={p} lang={lang} />
+            <PersonCard person={p} lang={lang} projects={projectsOf(p.id)} />
           ))}
         </div>
       </section>
@@ -131,8 +133,8 @@ const alumni = people.filter((p) => p.data.role === 'alumni');
   }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 2.5rem 1.75rem;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 3rem 2rem;
   }
   .alumni {
     list-style: none;

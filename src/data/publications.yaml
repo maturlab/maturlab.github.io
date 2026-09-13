@@ -1,231 +1,508 @@
 # YAYINLAR
-# Yeni yayın eklemek için aşağıdaki bloklardan birini kopyalayıp en üste yapıştırın.
-# - id: benzersiz kısa bir ad (boşluksuz)
-# - Tür adlarını italik yazmak için alt çizgi kullanın: _Nannospalax_
+# Yeni yayın eklemek için bir bloğu kopyalayıp en üste yapıştırın ve bilgileri değiştirin.
+# - id: benzersiz kısa bir ad (boşluksuz), ör. soyad-yil
+# - Tür adlarını italik yazmak için alt çizgi kullanın: _Nannospalax xanthodon_
+# - type: article (makale), chapter (kitap bölümü), book (kitap)
 # - Lab üyelerinin adları, kişi dosyalarındaki "citationNames" alanına göre otomatik koyu yazılır.
 #
-# NOT: Bu liste Crossref veritabanından çekildi. Ferhat Hoca'nın kontrol etmesi önerilir.
+# Kaynak: Ferhat Matur AVESİS profili (makaleler ve kitaplar), tam yazar listeleri ve DOI'ler Crossref'ten.
 
-- id: matur-2026-ate
-  authors: Matur F, Sözen M, Çolak E, Kandemir İ, Özkurt ŞÖ
+- id: matur-2026
+  authors: "Matur F, Sözen M, Çolak E, Kandemir İ, Özkurt ŞÖ"
   year: 2026
   title: "A chromosomal and integrative taxonomic revision of Anatolian blind mole rats (_Nannospalax_): Elevating cytotypes to species"
-  journal: Animal Taxonomy and Ecology
-  volume: "72"
-  pages: 111–166
-  doi: 10.1556/1777.2026.00131
+  journal: "Animal Taxonomy and Ecology"
+  volume: "72(2)"
+  pages: "111–166"
+  doi: "10.1556/1777.2026.00131"
 
-- id: sarikaya-2026-za
-  authors: Sarıkaya AD, Matur F, Çolak F, Sözen M
-  year: 2026
-  title: "Sexual dimorphism and ontogenetic variation in mandibular shape of the 2n = 60 cytotype of the Central Anatolian blind mole-rat _Nannospalax cilicicus_ (Rodentia: Spalacidae) from Türkiye"
-  journal: Zoologischer Anzeiger
-  volume: "325"
-  pages: 20–29
-  doi: 10.1016/j.jcz.2026.08.008
-
-- id: matveevsky-2026-tjb
-  authors: Matveevsky SN, Matur F, Çolak F, Kandaurov A, Sözen M, Pavlova SV, Kolomiets O
+- id: matveevsky-2026
+  authors: "Matveevsky SN, Matur F, Çolak F, Kandaurov A, Sözen M, Pavlova SV, Kolomiets O"
   year: 2026
   title: "Unusual RNA polymerase II patterns in meiotic prophase I in _Nannospalax xanthodon_: insights into chromatin, telomeres, and sex chromosomes"
-  journal: Turkish Journal of Biology
-  volume: "50"
-  pages: 109–121
-  doi: 10.55730/1300-0152.2794
+  journal: "Turkish Journal of Biology"
+  volume: "50(2)"
+  pages: "109–121"
+  doi: "10.55730/1300-0152.2794"
 
-- id: matur-2025-azb
-  authors: Matur F, Çetintaş O, Irmak S, Çolak F, Ekmen H, Mustafaoğlu G, Sözen M
+- id: yanchukov-2026
+  authors: "Yanchukov A, Çetintaş O, Çolak F, Nedyalkov N, Rusin M, Solak HM, Bilgin R, Matur F, Kalkan KK, Bugarski-Stanojević V, Lövy M, Kryštufek B, Abi-Said M, Ulutürk S, Toyran K, Basyouny Shahin AA, Gabelaia M, Sándor AD, Sözen M"
+  year: 2026
+  title: "Genome-wide SNP and mtDNA phylogeny of blind mole rats (Spalacinae Gray, 1821) reflects a complex history of relictualism, expansion, and speciation"
+  journal: "Zoological Journal of the Linnean Society"
+  volume: "206(1)"
+  pages: "1–20"
+  doi: "10.1093/zoolinnean/zlaf186"
+
+- id: sarikaya-2026
+  authors: "Sarıkaya AD, Matur F, Çolak F, Sözen M"
+  year: 2026
+  title: "Sexual dimorphism and ontogenetic variation in mandibular shape of the 2n = 60 cytotype of the Central Anatolian blind mole-rat _Nannospalax cilicicus_ (Rodentia: Spalacidae) from Türkiye"
+  journal: "Zoologischer Anzeiger"
+  volume: "325"
+  pages: "20–29"
+  doi: "10.1016/j.jcz.2026.08.008"
+
+- id: matur-2025
+  authors: "Matur F, Çetintaş O, Irmak S, Çolak F, Ekmen H, Mustafaoğlu G, Sözen M"
   year: 2025
-  title: "Assessing the taxonomic status and evolutionary history of _Acomys cilicicus_: insights from mtDNA analysis"
-  journal: Acta Zoologica Bulgarica
-  doi: 10.71424/azb77.4.002901
+  title: "Assessing the Taxonomic Status and Evolutionary History of _Acomys cilicicus_: Insights from mtDNA Analysis"
+  journal: "Acta Zoologica Bulgarica"
+  volume: "77(4)"
+  pages: "537–543"
+  doi: "10.71424/azb77.4.002901"
 
-- id: cetintas-2025-communc
-  authors: Çetintaş O, Sözen M, Irmak S, Kalkan KK, Çolak F, Matur F
+- id: alaca-2025
+  authors: "Alaca Yıldırım E, Kahrıman F, Matur F"
+  year: 2025
+  title: "Genetic diversity of Turkish colored maize landraces assessed by simple sequence repeat (SSR) markers"
+  journal: "Genetic Resources and Crop Evolution"
+  volume: "72(8)"
+  pages: "9623–9634"
+  doi: "10.1007/s10722-025-02522-9"
+
+- id: cetintas-2025
+  authors: "Çetintaş O, Sözen M, Irmak S, Kalkan KK, Çolak F, Matur F"
   year: 2025
   title: "Phylogeography of an Anatolian endemic and Alpine specialist woolly dormouse _Dryomys laniger_ with a description of a new species"
-  journal: Communications Faculty of Science University of Ankara Series C
-  volume: "34"
-  pages: 1–35
-  doi: 10.53447/communc.1532924
+  journal: "Communications Faculty of Sciences University of Ankara Series C Biology"
+  volume: "34(1)"
+  pages: "1–35"
+  doi: "10.53447/communc.1532924"
 
-- id: ergon-2023-ankem
-  authors: Ergon MC, Erdin M, Matur F, Sözen M, Polat C, Gunkan T, Öktem MA
+- id: celebi-2025
+  authors: "Çelebi B, Zgheib R, Karataş A, Babür C, Öktem İMA, Matur F, Sözen M, Davoust B, Mediannikov O, Fournier PE"
+  year: 2025
+  title: "_Bartonella_ Species in Small Mammals in Turkey: _Bartonella bilalgolemii_ sp. nov. Isolated from a Ural Field Mouse (_Apodemus uralensis_)"
+  journal: "Vector-Borne and Zoonotic Diseases"
+  volume: "25(1)"
+  pages: "60–70"
+  doi: "10.1089/vbz.2024.0026"
+
+- id: solak-2024
+  authors: "Solak HM, Kreisinger J, Čížková D, Sezgin E, Schmiedová L, Murtskhvaladze M, Henning Y, Çolak F, Matur F, Yanchukov A"
+  year: 2024
+  title: "Altitude shapes gut microbiome composition accounting for diet, thyroid hormone levels, and host genetics in a subterranean blind mole rat"
+  journal: "Frontiers in Microbiology"
+  volume: "15"
+  pages: "1–19"
+  doi: "10.3389/fmicb.2024.1476845"
+
+- id: polat-2024
+  authors: "Polat C, Erdin M, Kalkan ŞO, Irmak S, Çetintaş O, Çolak F, Kalkan KK, Çoğal M, Ölgen K, Sözen M, Matur F, Öktem İMA"
+  year: 2024
+  title: "Evaluating climate-dependent distribution of orthohantaviruses with monitoring wild rodents: One Health perspective"
+  journal: "Brazilian Journal of Microbiology"
+  volume: "55(3)"
+  pages: "2739–2751"
+  doi: "10.1007/s42770-024-01447-2"
+
+- id: erdin-2024
+  authors: "Erdin M, Polat C, Smura T, Irmak S, Cetintas O, Cogal M, Colak F, Karatas A, Sozen M, Matur F, Vapalahti O, Sironen T, Oktem IMA"
+  year: 2024
+  title: "Phylogenetic Characterization of Orthohantavirus dobravaense (Dobrava Virus)"
+  journal: "Emerging Infectious Diseases"
+  volume: "30(4)"
+  pages: "779–782"
+  doi: "10.3201/eid3004.230912"
+
+- id: erdin-2024-2
+  authors: "Erdin M, Smura T, Kalkan KK, Cetintas O, Cogal M, Irmak S, Matur F, Polat C, Sironen T, Sozen M, Oktem IMA"
+  year: 2024
+  title: "Detection of divergent Orthohantavirus tulaense provides insight into wide host range and viral evolutionary patterns"
+  journal: "npj Viruses"
+  volume: "2(1)"
+  pages: "1–13"
+  doi: "10.1038/s44298-024-00072-y"
+
+- id: ergon-2023
+  authors: "Ergon MC, Erdin M, Matur F, Sözen M, Polat C, Gunkan T, Öktem MA"
   year: 2023
   title: "Ljungan virüsün (Parechovirus B) kemiricilerde moleküler yöntemle araştırılması"
-  journal: ANKEM Dergisi
-  volume: "37"
-  pages: 68–73
-  doi: 10.54962/ankemderg.1405317
+  journal: "ANKEM Dergisi"
+  volume: "37(3)"
+  pages: "68–73"
+  doi: "10.54962/ankemderg.1405317"
 
-- id: matur-2023-fee
-  authors: Matur F, Keskin E, Sezgin E
+- id: celebi-2023
+  authors: "Çelebi B, Yeni DK, Yılmaz Y, Matur F, Babür C, Öktem MA, Sözen M, Karataş A, Raoult D, Mediannikov O, Fournier PE"
+  year: 2023
+  title: "_Borrelia miyamotoi_ in wild rodents from four different regions of Turkey"
+  journal: "Ticks and Tick-borne Diseases"
+  volume: "14(3)"
+  pages: "102143"
+  doi: "10.1016/j.ttbdis.2023.102143"
+
+- id: matur-2023
+  authors: "Matur F, Keskin E, Sezgin E"
   year: 2023
   title: "Editorial: Population genomics and adaptation to novel environments: challenges and opportunities"
-  journal: Frontiers in Ecology and Evolution
+  journal: "Frontiers in Ecology and Evolution"
   volume: "11"
-  doi: 10.3389/fevo.2023.1190218
+  doi: "10.3389/fevo.2023.1190218"
 
-- id: kaya-2022-ijegeo
-  authors: Kaya Özdemirel B, Çetintaş O, Sözen M, Çoğal M, Matur F
+- id: matur-2022
+  authors: "Matur F, Candan K, Ilgaz Ç, Tok CV, Sözen M, Çoğal M, Yakin BY, Yildirim E, Kumlutaş Y"
   year: 2022
-  title: "Modelling distribution of Asia Minor spiny mouse (_Acomys cilicicus_) using maximum entropy"
-  journal: International Journal of Environment and Geoinformatics
-  volume: "9"
-  pages: 118–125
-  doi: 10.30897/ijegeo.979699
+  title: "Species delimitation analysis to reveal the origin of Turkish _Podarcis siculus siculus_ (Rafinesque-Schmaltz, 1810) populations"
+  journal: "Uluslararası Tarım ve Yaban Hayatı Bilimleri Dergisi"
+  volume: "8(2)"
+  pages: "340–348"
+  doi: "10.24180/ijaws.1027526"
 
-- id: gunkan-2022-communc
-  authors: Gunkan T, Öktem MA, Matur F
+- id: gunkan-2022
+  authors: "Gunkan T, Öktem MA, Matur F"
   year: 2022
   title: "An investigation of Rabies virus existence on rodents by using new PCR primer pairs"
-  journal: Communications Faculty of Science University of Ankara Series C
-  volume: "31"
-  pages: 39–52
-  doi: 10.53447/communc.1062833
+  journal: "Communications Faculty of Sciences University of Ankara Series C Biology"
+  volume: "31(1)"
+  pages: "39–52"
+  doi: "10.53447/communc.1062833"
 
-- id: karakus-2020-parasitology
-  authors: Karakuş M, Öktem MA, Sözen M, Matur F, Çolak F, Nalçacı M, Özbel Y, Töz S
+- id: yanchukov-2022
+  authors: "Yanchukov A, Tarkhnishvili D, Erdolu M, Şahin MK, Candan K, Murtskhvaladze M, Gabelaia M, Iankoshvili G, Barateli N, Ilgaz Ç, Kumlutaş Y, Matur F, Çolak F, Arakelyan M, Galoyan E"
+  year: 2022
+  title: "Precise paternal ancestry of hybrid unisexual ZW lizards (genus _Darevskia_: Lacertidae: Squamata) revealed by Z-linked genomic markers"
+  journal: "Biological Journal of the Linnean Society"
+  volume: "136(2)"
+  pages: "293–305"
+  doi: "10.1093/biolinnean/blac023"
+
+- id: kaya-2022
+  authors: "Kaya Özdemirel B, Çetintaş O, Sözen M, Çoğal M, Matur F"
+  year: 2022
+  title: "Modelling Distribution of Asia Minor Spiny Mouse (_Acomys cilicicus_) Using Maximum Entropy"
+  journal: "International Journal of Environment and Geoinformatics"
+  volume: "9(3)"
+  pages: "118–125"
+  doi: "10.30897/ijegeo.979699"
+
+- id: ozdemirel-2022
+  authors: "Ozdemirel BK, Cetintas O, Sözen M, Cogal M, Colak F, Matur F"
+  year: 2022
+  title: "Investigating the relationship between haplotype diversity of Asia minor spiny mouse (_Acomys cilicicus_) and environmental factors"
+  journal: "Journal of Wildlife and Biodiversity"
+  volume: "6(3)"
+  pages: "87–102"
+
+- id: colak-2020
+  authors: "Colak F, Matur F"
+  year: 2020
+  title: "Do Seismic Signals Diverge at the Level of Cytotypes in Turkish Blind Mole Rats?"
+  journal: "Pakistan Journal of Zoology"
+  volume: "52(6)"
+  pages: "2101–2110"
+  doi: "10.17582/journal.pjz/20190219110254"
+
+- id: polat-2020
+  authors: "Polat C, Çelebi B, Irmak S, Karataş A, Çolak F, Matur F, Sözen M, Öktem IMA"
+  year: 2020
+  title: "Characterization of _Bartonella taylorii_ Strains in Small Mammals of the Turkish Thrace"
+  journal: "EcoHealth"
+  volume: "17(4)"
+  pages: "477–486"
+  doi: "10.1007/s10393-021-01518-y"
+
+- id: tarkhnishvili-2020
+  authors: "Tarkhnishvili D, Yanchukov A, Şahin MK, Gabelaia M, Murtskhvaladze M, Candan K, Galoyan E, Arakelyan M, Iankoshvili G, Kumlutaş Y, Ilgaz Ç, Matur F, Çolak F, Erdolu M, Kurdadze S, Barateli N, Anderson CL"
+  year: 2020
+  title: "Genotypic similarities among the parthenogenetic _Darevskia_ rock lizards with different hybrid origins"
+  journal: "BMC Evolutionary Biology"
+  volume: "20(1)"
+  doi: "10.1186/s12862-020-01690-9"
+
+- id: karakus-2020
+  authors: "Karakuş M, Öktem MA, Sözen M, Matur F, Çolak F, Nalçaci M, Özbel Y, Töz S"
   year: 2020
   title: "First molecular detection and identification of _Leishmania_ species in small wild rodents from Turkey"
-  journal: Parasitology
-  volume: "147"
-  pages: 1088–1093
-  doi: 10.1017/S0031182020000803
+  journal: "Parasitology"
+  volume: "147(10)"
+  pages: "1088–1093"
+  doi: "10.1017/s0031182020000803"
 
-- id: solak-2020-zs
-  authors: Solak HM, Yanchukov A, Çolak F, Matur F, Sözen M, Ayanoğlu İC, Winternitz JC
+- id: renaud-2020
+  authors: "Renaud S, Hardouin EA, Chevret P, Papayiannis K, Lymberakis P, Matur F, Garcia-Rodriguez O, Andreou D, Çetintaş O, Sözen M, Hadjisterkotis E, Mitsainas GP"
   year: 2020
-  title: "Altitudinal effects on innate immune response of a subterranean rodent"
-  journal: Zoological Science
-  volume: "37"
+  title: "Morphometrics and genetics highlight the complex history of Eastern Mediterranean spiny mice"
+  journal: "Biological Journal of the Linnean Society"
+  volume: "130(3)"
+  pages: "599–614"
+  doi: "10.1093/biolinnean/blaa063"
+
+- id: solak-2020
+  authors: "Solak HM, Yanchukov A, Çolak F, Matur F, Sözen M, Ayanoğlu İC, Winternitz JC"
+  year: 2020
+  title: "Altitudinal Effects on Innate Immune Response of a Subterranean Rodent"
+  journal: "Zoological Science"
+  volume: "37(1)"
   pages: "31"
-  doi: 10.2108/zs190067
+  doi: "10.2108/zs190067"
 
-- id: colak-2020-pjz
-  authors: Çolak F, Matur F
+- id: yanchukov-2020
+  authors: "Yanchukov A, Kandaurov A, Şahin MK, Matur F"
   year: 2020
-  title: "Do seismic signals diverge at the level of cytotypes in Turkish blind mole rats?"
-  journal: Pakistan Journal of Zoology
-  volume: "52"
-  doi: 10.17582/journal.pjz/20190219110254
+  title: "Karyotype analysis of _Nannospalax xanthodon_ (Spalacidae, Rodentia) at the easternmost part of its distribution range"
+  journal: "Communications Faculty of Sciences University of Ankara Series C Biology"
+  volume: "29(1)"
+  pages: "61–70"
 
-- id: matur-2019-mambio
-  authors: Matur F, Yanchukov A, Çolak F, Sözen M
+- id: usluca-2019
+  authors: "Usluca S, Celebi B, Karasartova D, Gureser AS, Matur F, Oktem MA, Sozen M, Karatas A, Babur C, Mumcuoglu KY, Taylan Ozkan A"
+  year: 2019
+  title: "Molecular Survey of _Babesia microti_ (Aconoidasida: Piroplasmida) in Wild Rodents in Turkey"
+  journal: "Journal of Medical Entomology"
+  volume: "56(6)"
+  pages: "1605–1609"
+  doi: "10.1093/jme/tjz084"
+
+- id: polat-2019
+  authors: "Polat C, Ergünay K, Irmak S, Erdin M, Brinkmann A, Çetintaş O, Çoğal M, Sözen M, Matur F, Nitsche A, Öktem İMA"
+  year: 2019
+  title: "A novel genetic lineage of Tula orthohantavirus in Altai voles (_Microtus obscurus_) from Turkey"
+  journal: "Infection, Genetics and Evolution"
+  volume: "67"
+  pages: "150–158"
+  doi: "10.1016/j.meegid.2018.11.015"
+
+- id: matur-2019
+  authors: "Matur F, Yanchukov A, Çolak F, Sözen M"
   year: 2019
   title: "Two major clades of blind mole rats (_Nannospalax_ sp.) revealed by mtDNA and microsatellite genotyping in Western and Central Turkey"
-  journal: Mammalian Biology
+  journal: "Mammalian Biology"
   volume: "94"
-  pages: 38–47
-  doi: 10.1016/j.mambio.2018.11.004
+  pages: "38–47"
+  doi: "10.1016/j.mambio.2018.11.004"
 
-- id: cetintas-2017-tjz
-  authors: Çetintaş O, Matur F, Sözen M
+- id: polat-2018
+  authors: "Polat C, Sironen T, Plyusnina A, Karatas A, Sozen M, Matur F, Vapalahti O, Oktem IMA, Plyusnin A"
+  year: 2018
+  title: "Dobrava hantavirus variants found in _Apodemus flavicollis_ mice in Kırklareli Province, Turkey"
+  journal: "Journal of Medical Virology"
+  volume: "90(5)"
+  pages: "810–818"
+  doi: "10.1002/jmv.25036"
+
+- id: polat-2017
+  authors: "Polat C, Matur F, Sözen M, Öktem İMA"
+  year: 2017
+  title: "Türkiye’nin Orta ve Güney Anadolu İllerindeki Yabani Kemiricilerde Hantavirüs Enfeksiyonlarının Serolojik Olarak Taranması"
+  journal: "Türk Mikrobiyoloji Cemiyeti Dergisi"
+  volume: "47(1)"
+  pages: "6–10"
+  doi: "10.5222/tmcd.2017.006"
+
+- id: mouton-2017
+  authors: "Mouton A, Mortelliti A, Grill A, Sara M, Krystufek B, Juskaitis R, et al."
+  year: 2017
+  title: "Evolutionary history and species delimitations: a case study of the hazel dormouse, _Muscardinus avellanarius_"
+  journal: "Conservation Genetics"
+  volume: "18(1)"
+  pages: "181–196"
+
+- id: cetintas-2017
+  authors: "Çetintaş O, Matur F, Sözen M"
   year: 2017
   title: "Distribution and conservation of _Acomys cilicicus_ (Mammalia: Rodentia) in Turkey"
-  journal: Turkish Journal of Zoology
-  volume: "41"
-  pages: 1059–1068
-  doi: 10.3906/zoo-1606-57
+  journal: "Turkish Journal of Zoology"
+  volume: "41(6)"
+  pages: "1059–1068"
+  doi: "10.3906/zoo-1606-57"
 
-- id: polat-2017-tmcd
-  authors: Polat C, Matur F, Sözen M, Öktem MA
-  year: 2017
-  title: "The serological screening of wild rodents for Hantavirus infections in the Middle and Southern Anatolia Region of Turkey"
-  journal: Türk Mikrobiyoloji Cemiyeti Dergisi
-  doi: 10.5222/tmcd.2017.006
-
-- id: arslan-2016-fz
-  authors: Arslan A, Kryštufek B, Matur F, Zima J
+- id: arslan-2016
+  authors: "Arslan A, Krystufek B, Matur F, Zima J"
   year: 2016
   title: "Review of chromosome races in blind mole rats (_Spalax_ and _Nannospalax_)"
-  journal: Folia Zoologica
-  volume: "65"
-  pages: 249–301
-  doi: 10.25225/fozo.v65.i4.a1.2016
+  journal: "Folia Zoologica"
+  volume: "65(4)"
+  pages: "249–301"
+  doi: "10.25225/fozo.v65.i4.a1.2016"
 
-- id: polat-2016-mb
-  authors: Polat C, Karataş A, Sözen M, Matur F, Abacıoğlu H, Öktem MA
+- id: polat-2016
+  authors: "Polat C, Karataş A, Sözen M, Matur F, Abacıoğlu H, Öktem MA"
   year: 2016
-  title: "Optimization of ELISA and immunoblot methods for the detection of IgG antibodies against Old World hantaviruses in wild rodents"
-  journal: Mikrobiyoloji Bülteni
-  volume: "50"
-  pages: 245–255
-  doi: 10.5578/mb.23161
+  title: "Optimization of ELISA and Immunoblot Methods for the Detection of IgG Antibodies Against Old World Hantaviruses in Wild Rodents"
+  journal: "Mikrobiyoloji Bulteni"
+  volume: "50(2)"
+  pages: "245–255"
+  doi: "10.5578/mb.23161"
 
-- id: sozen-2015-fz
-  authors: Sözen M, Çolak F, Sevindik M, Matur F
+- id: sozen-2015
+  authors: "Sözen M, Çolak F, Sevındık M, Matur F"
   year: 2015
   title: "Two new cytotypes and additional karyological records for blind mole rats, _Nannospalax xanthodon_ and _N. ehrenbergi_ (Mammalia, Rodentia) in Turkey"
-  journal: Folia Zoologica
-  volume: "64"
-  pages: 167–172
-  doi: 10.25225/fozo.v64.i2.a10.2015
+  journal: "Folia Zoologica"
+  volume: "64(2)"
+  pages: "167–172"
+  doi: "10.25225/fozo.v64.i2.a10.2015"
 
-- id: matur-2013-tjz
-  authors: Matur F, Çolak F, Ceylan T, Sevindik M, Sözen M
+- id: celebi-2015
+  authors: "Celebi B, Karagoz A, Oktem MA, Çarhan A, Matur F, Özkazanç NK, et al."
+  year: 2015
+  title: "_Bartonella_ species in wild small mammals in Western Black Sea Region of Turkey"
+  journal: "Ankara Üniversitesi Veteriner Fakültesi Dergisi"
+  volume: "62(3)"
+  pages: "183–187"
+  doi: "10.1501/vetfak_0000002678"
+
+- id: oktem-2014
+  authors: "Öktem İMA, Uyar Y, Dincer E, Gozalan A, Schlegel M, Babur C, et al."
+  year: 2014
+  title: "Dobrava-Belgrade Virus in _Apodemus flavicollis_ and _A. uralensis_ Mice, Turkey"
+  journal: "Emerging Infectious Diseases"
+  volume: "20(1)"
+  pages: "121–125"
+
+- id: matur-2013
+  authors: "Matur F, Colak F, Ceylan T, Sevindik M, Sozen M"
   year: 2013
   title: "Chromosomal evolution of the genus _Nannospalax_ (Palmer 1903) (Rodentia, Muridae) from western Turkey"
-  journal: Turkish Journal of Zoology
+  journal: "Turkish Journal of Zoology"
   volume: "37(4)"
-  pages: 470–487
-  doi: 10.3906/zoo-1208-25
+  pages: "470–487"
+  doi: "10.3906/zoo-1208-25"
 
-- id: kandemir-2012-fz
-  authors: Kandemir İ, Sözen M, Matur F, Kankılıç T, Martínková N, Çolak F, Özkurt ŞÖ, Çolak E
+- id: sozen-2013
+  authors: "Sozen M, Colak F, Sevindik M, Matur F"
+  year: 2013
+  title: "Cytotypes of _Nannospalax xanthodon_ (Satunin, 1898) (Rodentia: Spalacidae) from western Anatolia"
+  journal: "Turkish Journal of Zoology"
+  volume: "37(4)"
+  pages: "462–469"
+  doi: "10.3906/zoo-1108-25"
+
+- id: kandemir-2012
+  authors: "Kandemir İ, Sozen M, Matur F, Kankilic T, Martinkova N, Colak F, et al."
   year: 2012
-  title: "Phylogeny of species and cytotypes of mole rats (Spalacidae) in Turkey inferred from mitochondrial cytochrome _b_ gene sequences"
-  journal: Folia Zoologica
-  volume: "61"
-  pages: 25–33
-  doi: 10.25225/fozo.v61.i1.a5.2012
+  title: "Phylogeny of species and cytotypes of mole rats (Spalacidae) in Turkey inferred from mitochondrial cytochrome b gene sequences"
+  journal: "Folia Zoologica"
+  volume: "61(1)"
+  pages: "25–33"
+  doi: "10.25225/fozo.v61.i1.a5.2012"
 
-- id: sozen-2012-tjz
-  authors: Sözen M, Matur F, Çolak F, Irmak S
+- id: sozen-2012
+  authors: "Sözen M, Matur F, Çolak F, Irmak S"
   year: 2012
   title: "Karyological characteristics, morphological peculiarities, and a new distribution locality for _Talpa davidiana_ (Mammalia: Soricomorpha) in Turkey"
-  journal: Turkish Journal of Zoology
-  doi: 10.3906/zoo-1201-13
+  journal: "Turkish Journal of Zoology"
+  volume: "36(6)"
+  pages: "806–813"
+  doi: "10.3906/zoo-1201-13"
 
-- id: matur-2011-zs
-  authors: Matur F, Çolak F, Sevindik M, Sözen M
-  year: 2011
-  title: "Chromosome differentiation of four 2n = 50 chromosomal forms of Turkish mole rat, _Nannospalax nehringi_"
-  journal: Zoological Science
-  volume: "28"
-  pages: 61–67
-  doi: 10.2108/zsj.28.61
-
-- id: sozen-2011-tjz
-  authors: Sözen M, Çataklı K, Eroğlu F, Matur F, Sevindik M
+- id: sozen-2011
+  authors: "Sözen M, Çataklı K, Eroğlu F, Matur F, Sevindik M"
   year: 2011
   title: "Distribution of chromosomal forms of _Nannospalax nehringi_ (Satunin, 1898) (Rodentia: Spalacidae) in Çankırı and Çorum provinces, Turkey"
-  journal: Turkish Journal of Zoology
-  doi: 10.3906/zoo-0905-3
+  journal: "Turkish Journal of Zoology"
+  volume: "35(3)"
+  pages: "367–374"
+  doi: "10.3906/zoo-0905-3"
 
-- id: matur-2009-zme
-  authors: Matur F
+- id: matur-2011
+  authors: "Matur F, Çolak F, Sevindik M, Sözen M"
+  year: 2011
+  title: "Chromosome Differentiation of Four 2n = 50 Chromosomal Forms of Turkish Mole Rat, _Nannospalax nehringi_"
+  journal: "Zoological Science"
+  volume: "28(1)"
+  pages: "61–67"
+  doi: "10.2108/zsj.28.61"
+
+- id: sozen-2009
+  authors: "Sozen M, Ozkurt SO, Karatas A, Colak E, Matur F"
   year: 2009
-  title: "A cytogenetic study on the Taurus ground squirrel, _Spermophilus taurensis_ Gündüz et al., 2007 (Mammalia: Rodentia), in Turkey"
-  journal: Zoology in the Middle East
-  volume: "48"
-  pages: 103–105
-  doi: 10.1080/09397140.2009.10638374
+  title: "On the karyology, morphology and biology of _Chionomys gud_ (Satunin, 1909) (Mammalia: Rodentia) in Turkey"
+  journal: "North-western Journal of Zoology"
+  volume: "5(1)"
+  pages: "121–129"
 
-- id: karatas-2007-zme
-  authors: Karataş A, Sözen M, Özkurt Ş, Matur F
+- id: matur-2009
+  authors: "Matur F"
+  year: 2009
+  title: "A cytogenetic study on the Taurus Ground Squirrel, _Spermophilus taurensis_ Gündüz et al., 2007 (Mammalia: Rodentia), in Turkey"
+  journal: "Zoology in the Middle East"
+  volume: "48(1)"
+  pages: "103–105"
+  doi: "10.1080/09397140.2009.10638374"
+
+- id: ivanitskaya-2008
+  authors: "Ivanitskaya E, Sözen M, Rashkovetsky L, Matur F, Nevo E"
+  year: 2008
+  title: "Discrimination of 2n = 60 _Spalax leucodon_ cytotypes (Spalacidae, Rodentia) in Turkey by means of classical and molecular cytogenetic techniques"
+  journal: "Cytogenetic and Genome Research"
+  volume: "122(2)"
+  pages: "139–149"
+  doi: "10.1159/000163091"
+
+- id: karatas-2007
+  authors: "Karataş A, Sözen M, Özkurt Ş, Matur F"
   year: 2007
   title: "Karyology of three bat species of the genus _Myotis_ (_M. myotis_, _M. bechsteinii_, _M. brandtii_) (Chiroptera: Vespertilionidae) from Turkey"
-  journal: Zoology in the Middle East
-  volume: "40"
-  pages: 5–9
-  doi: 10.1080/09397140.2007.10638198
+  journal: "Zoology in the Middle East"
+  volume: "40(1)"
+  pages: "5–9"
+  doi: "10.1080/09397140.2007.10638198"
 
-- id: matur-2005-zme
-  authors: Matur F, Sözen M
+- id: sozen-2006
+  authors: "Sözen M, Sevindik M, Matur F"
+  year: 2006
+  title: "Karyological and some morphological characteristics of _Spalax leucodon_ Nordmann, 1840 (Mammalia: Rodentia) superspecies around Kastamonu province, Turkey"
+  journal: "Turkish Journal of Zoology"
+  volume: "30(2)"
+  pages: "205–219"
+
+- id: sozen-2006-2
+  authors: "Sozen M, Matur F, Colak E, Ozkurt S, Karatas A"
+  year: 2006
+  title: "Some karyological records and a new chromosomal form for _Spalax_ (Mammalia: Rodentia) in Turkey"
+  journal: "Folia Zoologica"
+  volume: "55(3)"
+  pages: "247–256"
+
+- id: karatas-2006
+  authors: "Karatas A, Sozen M, Matur F"
+  year: 2006
+  title: "Karyology of some bat species (Chiroptera: Rhinolophidae, Molossidae) from Turkey"
+  journal: "Mammalian Biology"
+  volume: "71(3)"
+  pages: "159–163"
+
+- id: matur-2005
+  authors: "Matur F, Sözen M"
   year: 2005
   title: "A karyological study on subterranean mole rats of the _Spalax leucodon_ Nordmann, 1840 (Mammalia: Rodentia) superspecies in northwestern Turkey"
-  journal: Zoology in the Middle East
-  volume: "36"
-  pages: 5–10
-  doi: 10.1080/09397140.2005.10638121
+  journal: "Zoology in the Middle East"
+  volume: "36(1)"
+  pages: "5–10"
+  doi: "10.1080/09397140.2005.10638121"
+
+# ---------- Kitaplar ve kitap bölümleri ----------
+
+- id: matur-eliiyi-2025-kitap
+  type: book
+  authors: "Matur F, Eliiyi U"
+  year: 2025
+  title: "Modeling and Optimization for Sustainable Agriculture: Methods and Case Studies"
+  journal: "Efe Academy Publishing, İstanbul"
+
+- id: matur-eliiyi-2025-bolum
+  type: chapter
+  authors: "Matur F, Eliiyi U"
+  year: 2025
+  title: "Modeling farm ecology and antimicrobial resistance: a One Health approach"
+  journal: "In: Eliiyi D (ed.), Modeling and Optimization for Sustainable Agriculture: Methods and Case Studies. Efe Academy Publishing"
+  pages: "160–187"
+
+- id: matur-2017-bolum
+  type: chapter
+  authors: "Matur F, Irmak S, Sözen M"
+  year: 2017
+  title: "Mammalia: Memeliler"
+  journal: "In: Büyükgüzel K, Kaplan A, Alan Ş (eds.), Zonguldak Ekosistemi. Bülent Ecevit Üniversitesi Yayınları"
+  pages: "335–344"
+
+- id: matur-2014-bolum
+  type: chapter
+  authors: "Matur F, Irmak S"
+  year: 2014
+  title: "Endotermi: Hayata bir yüksek enerji yaklaşımı"
+  journal: "In: Sözen M (ed.), Omurgalı Yaşamı. Nobel, Ankara"
+  pages: "537–558"

@@ -10,7 +10,9 @@ interface Props {
 
 const { lang } = Astro.props;
 const s = ui[lang];
-const pubs = await getPublications();
+const all = await getPublications();
+const pubs = all.filter((p) => p.data.type === 'article');
+const books = all.filter((p) => p.data.type !== 'article');
 const labNames = await getLabNames();
 const years = [...new Set(pubs.map((p) => p.data.year))];
 ---
@@ -20,6 +22,7 @@ const years = [...new Set(pubs.map((p) => p.data.year))];
     <p class="eyebrow">MICE LAB</p>
     <h1>{s.nav.publications}</h1>
     <p class="lead">{s.pubsIntro}</p>
+    <p class="counts muted">{pubs.length} {s.articles.toLocaleLowerCase(lang)} · {books.length} {s.books.toLocaleLowerCase(lang)}</p>
   </header>
 
   <div class="wrap body">
@@ -41,6 +44,18 @@ const years = [...new Set(pubs.map((p) => p.data.year))];
           </ul>
         </section>
       ))
+    }
+    {
+      books.length > 0 && (
+        <section class="year" data-year>
+          <h2 class="books-title">{s.books}</h2>
+          <ul>
+            {books.map((pub) => (
+              <PublicationItem pub={pub} labNames={labNames} showYear />
+            ))}
+          </ul>
+        </section>
+      )
     }
     <p class="empty muted" hidden>{s.noResults}</p>
   </div>
@@ -109,6 +124,17 @@ const years = [...new Set(pubs.map((p) => p.data.year))];
   .year :global([hidden]),
   .year[hidden] {
     display: none;
+  }
+  .counts {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+  }
+  .year h2.books-title {
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+  .year:has(.books-title) {
+    grid-template-columns: 1fr;
   }
   .empty {
     padding-block: 2rem;

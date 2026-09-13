@@ -17,8 +17,8 @@ const people = defineCollection({
   schema: ({ image }) =>
     z.object({
       name: z.string(),
-      // pi: lab yöneticisi, postdoc, phd: doktora, msc: yüksek lisans, bsc: lisans, alumni: mezun
-      role: z.enum(['pi', 'postdoc', 'phd', 'msc', 'bsc', 'alumni']),
+      // pi: lab yöneticisi, postdoc, phd: doktora, msc: yüksek lisans, grad: lisansüstü (belirtilmemiş), bsc: lisans, alumni: mezun
+      role: z.enum(['pi', 'postdoc', 'phd', 'msc', 'grad', 'bsc', 'alumni']),
       title: text.optional(),
       photo: image().optional(),
       email: z.string().optional(),
@@ -45,6 +45,8 @@ const people = defineCollection({
         .object({
           scholar: z.string().optional(),
           orcid: z.string().optional(),
+          scopus: z.string().optional(),
+          wos: z.string().optional(),
           researchgate: z.string().optional(),
           avesis: z.string().optional(),
           linkedin: z.string().optional(),
@@ -64,11 +66,16 @@ const projects = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: text,
-      summary: text,
+      summary: text.optional(),
       description: text.optional(),
+      // research: araştırma projesi, network: uluslararası ağ (ör. COST Aksiyonu)
+      kind: z.enum(['research', 'network']).default('research'),
       status: z.enum(['ongoing', 'completed']),
       years: z.string(),
-      funding: text.optional(),
+      funding: text.optional(), // ör. "TÜBİTAK 1001"
+      lead: z.string().optional(), // proje yürütücüsü
+      collaborators: z.array(z.string()).default([]), // lab dışındaki araştırmacılar
+      link: z.string().optional(), // ör. AVESİS proje sayfası
       image: image().optional(),
       imageAlt: text.optional(),
       members: z.array(reference('people')).default([]),
