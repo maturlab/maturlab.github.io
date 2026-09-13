@@ -1,0 +1,196 @@
+---
+import { Image } from 'astro:assets';
+import { getEntries, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Avatar from '../components/Avatar.astro';
+import { routes, t, tList, ui, url, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  project: CollectionEntry<'projects'>;
+}
+
+const { lang, project } = Astro.props;
+const { data } = project;
+const s = ui[lang];
+const r = routes[lang];
+const members = (await getEntries(data.members)).filter(Boolean);
+const tags = tList(data.tags, lang);
+const paragraphs = t(data.description, lang).split(/\n\s*\n/).filter(Boolean);
+const altLang = lang === 'tr' ? 'en' : 'tr';
+---
+
+<Base
+  lang={lang}
+  title={t(data.title, lang)}
+  description={t(data.summary, lang)}
+  altPath={`${routes[altLang].projects}/${project.id}`}
+  current="projects"
+>
+  <article class="wrap">
+    <header class="head">
+      <a class="back" href={url(r.projects)}>{s.backToProjects}</a>
+      <span class="status" data-status={data.status}>{s.status[data.status]}</span>
+      <h1>{t(data.title, lang)}</h1>
+      <p class="lead">{t(data.summary, lang)}</p>
+    </header>
+
+    {
+      data.image && (
+        <figure class="cover">
+          <Image src={data.image} alt={t(data.imageAlt, lang)} width={1120} widths={[640, 1120, 1680]} sizes="(max-width: 1180px) 100vw, 1120px" />
+          {data.imageAlt && <figcaption>{t(data.imageAlt, lang)}</figcaption>}
+        </figure>
+      )
+    }
+
+    <div class="layout">
+      <div class="prose">
+        {paragraphs.map((p) => <p>{p}</p>)}
+        {tags.length > 0 && <ul class="chips">{tags.map((tag) => <li>{tag}</li>)}</ul>}
+      </div>
+
+      <aside class="facts">
+        <dl>
+          <div>
+            <dt>{s.period}</dt>
+            <dd>{data.years}</dd>
+          </div>
+          {
+            data.funding && (
+              <div>
+                <dt>{s.funding}</dt>
+                <dd>{t(data.funding, lang)}</dd>
+              </div>
+            )
+          }
+        </dl>
+        {
+          members.length > 0 && (
+            <>
+              <h2 class="eyebrow">{s.projectTeam}</h2>
+              <ul class="team">
+                {members.map((m) => (
+                  <li>
+                    <a href={url(`${r.people}/${m.id}`)}>
+                      <Avatar name={m.data.name} photo={m.data.photo} size={44} />
+                      <span>
+                        <strong>{m.data.name}</strong>
+                        <small>{m.data.title ? t(m.data.title, lang) : s.roleSingle[m.data.role]}</small>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )
+        }
+      </aside>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .head {
+    padding-block: clamp(2.5rem, 6vw, 4rem) 2.5rem;
+    max-width: 52rem;
+  }
+  .back {
+    display: block;
+    font-size: 0.875rem;
+    text-decoration: none;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+  .head h1 {
+    margin-top: 0.75rem;
+    font-size: clamp(2rem, 4.5vw, 3.1rem);
+  }
+  .head .lead {
+    margin-top: 1.25rem;
+  }
+  .cover {
+    margin: 0 0 3rem;
+  }
+  .cover img {
+    width: 100%;
+    border-radius: calc(var(--radius) + 4px);
+  }
+  figcaption {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.6rem;
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 4rem;
+    padding-bottom: 5rem;
+    border-top: 1px solid var(--line);
+    padding-top: 2.5rem;
+  }
+  .prose {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    font-size: 1.05rem;
+    max-width: 66ch;
+  }
+  .prose .chips {
+    margin-top: 1rem;
+  }
+  dl {
+    margin: 0 0 2rem;
+    display: grid;
+    gap: 1rem;
+  }
+  dt {
+    font-size: 0.75rem;
+    font-weight: 550;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  dd {
+    margin: 0.15rem 0 0;
+  }
+  .facts h2 {
+    margin-bottom: 0.75rem;
+  }
+  .team {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .team a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+  .team :global(.avatar) {
+    border-radius: 50%;
+    font-size: 0.85rem;
+    font-family: var(--sans);
+    font-weight: 600;
+    flex: none;
+  }
+  .team strong {
+    display: block;
+    font-weight: 550;
+    font-size: 0.925rem;
+  }
+  .team small {
+    display: block;
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+  @media (max-width: 820px) {
+    .layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>

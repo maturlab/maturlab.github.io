@@ -1,0 +1,12 @@
+---
+import View from '../../views/Person.astro';
+import { getPeople } from '../../lib/data';
+
+export async function getStaticPaths() {
+  return (await getPeople()).map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+---
+
+<View lang="tr" person={entry} />

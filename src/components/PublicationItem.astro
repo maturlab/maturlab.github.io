@@ -1,0 +1,82 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatTitle, highlightAuthors } from '../i18n';
+
+interface Props {
+  pub: CollectionEntry<'publications'>;
+  labNames: string[];
+  showYear?: boolean;
+}
+
+const { pub, labNames, showYear = false } = Astro.props;
+const { data } = pub;
+const link = data.doi ? `https://doi.org/${data.doi}` : data.url;
+const details = [data.volume, data.pages].filter(Boolean).join(': ');
+const searchText = `${data.title.replaceAll('_', '')} ${data.authors} ${data.journal} ${data.year}`.toLocaleLowerCase('tr');
+---
+
+<li class="pub" data-search={searchText}>
+  {showYear && <span class="year">{data.year}</span>}
+  <div>
+    <p class="title">
+      {link ? <a href={link} target="_blank" rel="noopener" set:html={formatTitle(data.title)} /> : <span set:html={formatTitle(data.title)} />}
+    </p>
+    <p class="authors" set:html={highlightAuthors(data.authors, labNames)} />
+    <p class="venue">
+      <em>{data.journal}</em>{details && `, ${details}`}
+      {data.doi && <a class="doi" href={link} target="_blank" rel="noopener">DOI</a>}
+    </p>
+  </div>
+</li>
+
+<style>
+  .pub {
+    display: flex;
+    gap: 1.25rem;
+    padding-block: 1.1rem;
+    border-top: 1px solid var(--line);
+  }
+  .pub:first-child {
+    border-top: 0;
+  }
+  .year {
+    font-family: var(--serif);
+    color: var(--muted);
+    min-width: 3rem;
+  }
+  .title {
+    font-family: var(--serif);
+    font-size: 1.12rem;
+    line-height: 1.35;
+  }
+  .title a {
+    text-decoration: none;
+  }
+  .title a:hover {
+    text-decoration: underline;
+  }
+  .authors {
+    font-size: 0.875rem;
+    color: var(--ink-2);
+    margin-top: 0.3rem;
+  }
+  .authors :global(strong) {
+    font-weight: 620;
+    color: var(--ink);
+  }
+  .venue {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+  .doi {
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    padding: 0.05rem 0.4rem;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+</style>

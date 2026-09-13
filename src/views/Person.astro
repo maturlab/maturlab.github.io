@@ -1,0 +1,355 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Avatar from '../components/Avatar.astro';
+import PublicationItem from '../components/PublicationItem.astro';
+import { routes, t, tList, ui, url, type Lang } from '../i18n';
+import { getLabNames, getProjectsFor, getPublicationsFor } from '../lib/data';
+
+interface Props {
+  lang: Lang;
+  person: CollectionEntry<'people'>;
+}
+
+const { lang, person } = Astro.props;
+const { data } = person;
+const s = ui[lang];
+const r = routes[lang];
+const altLang = lang === 'tr' ? 'en' : 'tr';
+
+const subtitle = data.title ? t(data.title, lang) : s.roleSingle[data.role];
+const bio = t(data.bio, lang).split(/\n\s*\n/).filter(Boolean);
+const interests = tList(data.interests, lang);
+const projects = await getProjectsFor(person);
+const pubs = await getPublicationsFor(person);
+const labNames = await getLabNames();
+
+const linkLabels: Record<string, string> = {
+  scholar: 'Google Scholar',
+  orcid: 'ORCID',
+  researchgate: 'ResearchGate',
+  avesis: 'AVESİS',
+  linkedin: 'LinkedIn',
+  github: 'GitHub',
+  website: lang === 'tr' ? 'Kişisel web sitesi' : 'Website',
+};
+const links = Object.entries(data.links).filter(([, href]) => href) as [string, string][];
+---
+
+<Base lang={lang} title={data.name} description={`${data.name} — ${subtitle}, MICE LAB`} altPath={`${routes[altLang].people}/${person.id}`} current="people">
+  <div class="wrap">
+    <a class="back" href={url(r.people)}>{s.backToPeople}</a>
+
+    <div class="layout">
+      <aside class="side">
+        <Avatar name={data.name} photo={data.photo} size={320} />
+        <ul class="contact">
+          {data.email && <li><a href={`mailto:${data.email}`}>{data.email}</a></li>}
+          {
+            links.map(([key, href]) => (
+              <li>
+                <a href={href} target="_blank" rel="noopener">
+                  {linkLabels[key]} <span aria-hidden="true">↗</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        {
+          data.cv && (
+            <a class="cv" href={url(`/cv/${data.cv}`)} download>
+              {s.downloadCv}
+            </a>
+          )
+        }
+      </aside>
+
+      <div class="main">
+        <header>
+          <p class="eyebrow">{s.roleSingle[data.role]}</p>
+          <h1>{data.name}</h1>
+          {data.title && <p class="subtitle">{subtitle}</p>}
+          {data.graduated && <p class="subtitle muted">{data.graduated}</p>}
+        </header>
+
+        {
+          bio.length > 0 && (
+            <section>
+              <h2>{s.about}</h2>
+              <div class="prose">{bio.map((p) => <p>{p}</p>)}</div>
+            </section>
+          )
+        }
+
+        {
+          interests.length > 0 && (
+            <section>
+              <h2>{s.interests}</h2>
+              <ul class="chips">{interests.map((i) => <li>{i}</li>)}</ul>
+            </section>
+          )
+        }
+
+        {
+          data.education.length > 0 && (
+            <section>
+              <h2>{s.education}</h2>
+              <ol class="timeline">
+                {data.education.map((e) => (
+                  <li>
+                    <span class="when">{e.years}</span>
+                    <div>
+                      <strong>
+                        {t(e.degree, lang)}
+                        {e.field && `, ${t(e.field, lang)}`}
+                      </strong>
+                      <span class="where">{e.institution}</span>
+                      {e.thesis && (
+                        <span class="thesis">
+                          {s.thesis}: “{t(e.thesis, lang)}”
+                        </span>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )
+        }
+
+        {
+          data.experience.length > 0 && (
+            <section>
+              <h2>{s.experience}</h2>
+              <ol class="timeline">
+                {data.experience.map((e) => (
+                  <li>
+                    <span class="when">{e.years}</span>
+                    <div>
+                      <strong>{t(e.position, lang)}</strong>
+                      <span class="where">{e.institution}</span>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )
+        }
+
+        {
+          data.awards.length > 0 && (
+            <section>
+              <h2>{s.awards}</h2>
+              <ol class="timeline">
+                {data.awards.map((a) => (
+                  <li>
+                    <span class="when">{a.year}</span>
+                    <div>
+                      <strong>{t(a.title, lang)}</strong>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )
+        }
+
+        {
+          projects.length > 0 && (
+            <section>
+              <h2>{s.projects}</h2>
+              <ul class="proj">
+                {projects.map((p) => (
+                  <li>
+                    <a href={url(`${r.projects}/${p.id}`)}>{t(p.data.title, lang)}</a>
+                    <span class="status" data-status={p.data.status}>
+                      {s.status[p.data.status]} · {p.data.years}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+
+        {
+          pubs.length > 0 && (
+            <section>
+              <h2>
+                {s.publications} <span class="count">{pubs.length}</span>
+              </h2>
+              <ul class="pubs">
+                {pubs.map((pub) => (
+                  <PublicationItem pub={pub} labNames={labNames} showYear />
+                ))}
+              </ul>
+            </section>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .back {
+    display: inline-block;
+    font-size: 0.875rem;
+    text-decoration: none;
+    color: var(--muted);
+    margin-block: 2.5rem 2rem;
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    padding-bottom: 5rem;
+  }
+  .side {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+  }
+  .side :global(.avatar) {
+    width: 100%;
+    height: auto;
+  }
+  .contact {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 0;
+    font-size: 0.875rem;
+  }
+  .contact li {
+    padding-block: 0.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .contact a {
+    text-decoration: none;
+    word-break: break-word;
+  }
+  .contact span {
+    color: var(--muted);
+    font-size: 0.75rem;
+  }
+  .cv {
+    display: block;
+    margin-top: 1.25rem;
+    text-align: center;
+    padding: 0.65rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 999px;
+  }
+  .cv:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+  .main {
+    display: flex;
+    flex-direction: column;
+    gap: 2.75rem;
+    max-width: 46rem;
+  }
+  .main h1 {
+    margin-top: 0.5rem;
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  }
+  .subtitle {
+    font-size: 1.1rem;
+    color: var(--ink-2);
+    margin-top: 0.4rem;
+  }
+  section h2 {
+    font-size: 1.35rem;
+    padding-bottom: 0.6rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .count {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-left: 0.25rem;
+  }
+  .prose {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1.05rem;
+    color: var(--ink-2);
+  }
+  .timeline,
+  .proj,
+  .pubs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .timeline li {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 0.8rem;
+    border-top: 1px solid var(--line);
+  }
+  .timeline li:first-child {
+    border-top: 0;
+    padding-top: 0.2rem;
+  }
+  .when {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.1rem;
+  }
+  .timeline strong {
+    display: block;
+    font-weight: 550;
+  }
+  .where {
+    display: block;
+    color: var(--ink-2);
+    font-size: 0.925rem;
+  }
+  .thesis {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 0.25rem;
+  }
+  .proj li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+    padding-block: 0.8rem;
+    border-top: 1px solid var(--line);
+  }
+  .proj li:first-child {
+    border-top: 0;
+    padding-top: 0.2rem;
+  }
+  .proj a {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    text-decoration: none;
+  }
+  @media (max-width: 760px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+    .side {
+      position: static;
+      max-width: 240px;
+    }
+    .timeline li {
+      grid-template-columns: 1fr;
+      gap: 0.1rem;
+    }
+  }
+</style>

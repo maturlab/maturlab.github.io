@@ -1,0 +1,165 @@
+---
+import { Image } from 'astro:assets';
+import mole from '../assets/mole-icon.png';
+import { routes, ui, url, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  altPath: string;
+  current?: string;
+}
+
+const { lang, altPath, current } = Astro.props;
+const s = ui[lang];
+const r = routes[lang];
+const items = [
+  ['projects', r.projects, s.nav.projects],
+  ['people', r.people, s.nav.people],
+  ['publications', r.publications, s.nav.publications],
+  ['contact', r.contact, s.nav.contact],
+] as const;
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href={url(r.home)} aria-label="MICE LAB">
+      <Image src={mole} alt="" width={44} height={Math.round((44 * mole.height) / mole.width)} loading="eager" />
+      <span class="brand-text">
+        <span class="brand-name">MICE LAB</span>
+        <span class="brand-sub">{s.labFullName}</span>
+      </span>
+    </a>
+
+    <nav aria-label={lang === 'tr' ? 'Ana menü' : 'Main menu'}>
+      <ul>
+        {
+          items.map(([key, href, label]) => (
+            <li>
+              <a href={url(href)} aria-current={current === key ? 'page' : undefined}>
+                {label}
+              </a>
+            </li>
+          ))
+        }
+        <li class="lang">
+          <a href={url(altPath)} hreflang={lang === 'tr' ? 'en' : 'tr'} title={s.otherLangLabel}>
+            {s.otherLang}
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(1.4) blur(10px);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    min-height: 72px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .brand:hover {
+    color: var(--ink);
+  }
+  .brand img {
+    width: 44px;
+    height: auto;
+  }
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+  .brand-name {
+    font-weight: 650;
+    letter-spacing: 0.06em;
+    font-size: 1.05rem;
+  }
+  .brand-sub {
+    font-size: 0.72rem;
+    color: var(--muted);
+    max-width: 30ch;
+  }
+  nav ul {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  nav a {
+    display: block;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.925rem;
+    font-weight: 450;
+    text-decoration: none;
+    color: var(--ink-2);
+    border-radius: 6px;
+  }
+  nav a:hover {
+    color: var(--ink);
+    background: #0000000a;
+  }
+  nav a[aria-current='page'] {
+    color: var(--ink);
+    box-shadow: inset 0 -2px 0 var(--accent);
+    border-radius: 0;
+  }
+  .lang {
+    margin-left: 0.5rem;
+    padding-left: 0.75rem;
+    border-left: 1px solid var(--line);
+  }
+  .lang a {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 860px) {
+    .brand-sub {
+      display: none;
+    }
+  }
+  @media (max-width: 640px) {
+    .bar {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding-block: 0.6rem 0;
+    }
+    .brand img {
+      width: 36px;
+    }
+    nav {
+      margin-inline: calc(var(--gutter) * -1);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    nav ul {
+      padding-inline: calc(var(--gutter) - 0.75rem);
+      padding-block: 0.25rem;
+    }
+    nav a {
+      white-space: nowrap;
+    }
+  }
+</style>

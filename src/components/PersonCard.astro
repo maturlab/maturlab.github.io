@@ -1,0 +1,72 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Avatar from './Avatar.astro';
+import { routes, t, tList, ui, url, type Lang } from '../i18n';
+
+interface Props {
+  person: CollectionEntry<'people'>;
+  lang: Lang;
+}
+
+const { person, lang } = Astro.props;
+const { data } = person;
+const s = ui[lang];
+const href = url(`${routes[lang].people}/${person.id}`);
+const subtitle = data.title ? t(data.title, lang) : s.roleSingle[data.role];
+const interests = tList(data.interests, lang).slice(0, 3);
+---
+
+<article class="person">
+  <a href={href} class="photo" tabindex="-1" aria-hidden="true">
+    <Avatar name={data.name} photo={data.photo} size={320} />
+  </a>
+  <div>
+    <h3><a href={href}>{data.name}</a></h3>
+    <p class="subtitle">{subtitle}</p>
+    {interests.length > 0 && <p class="interests">{interests.join(' · ')}</p>}
+  </div>
+</article>
+
+<style>
+  .person {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    position: relative;
+  }
+  .photo {
+    display: block;
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+  .photo :global(.avatar) {
+    width: 100%;
+    height: auto;
+    transition: transform 0.35s ease, filter 0.35s;
+  }
+  .person:hover .photo :global(.avatar) {
+    transform: scale(1.025);
+    filter: grayscale(0);
+  }
+  h3 {
+    font-size: 1.15rem;
+  }
+  h3 a {
+    text-decoration: none;
+  }
+  h3 a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+  .subtitle {
+    font-size: 0.875rem;
+    color: var(--ink-2);
+    margin-top: 0.15rem;
+  }
+  .interests {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.35rem;
+  }
+</style>

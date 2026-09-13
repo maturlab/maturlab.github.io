@@ -1,0 +1,311 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Avatar from '../components/Avatar.astro';
+import PublicationItem from '../components/PublicationItem.astro';
+import mole from '../assets/mole-icon.png';
+import { routes, t, ui, url, type Lang } from '../i18n';
+import { getLabNames, getNews, getPeople, getProjects, getPublications } from '../lib/data';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const s = ui[lang];
+const r = routes[lang];
+
+const projects = await getProjects();
+const featured = (projects.filter((p) => p.data.featured).length ? projects.filter((p) => p.data.featured) : projects).slice(0, 3);
+const people = (await getPeople()).filter((p) => p.data.role !== 'alumni');
+const pubs = (await getPublications()).slice(0, 4);
+const labNames = await getLabNames();
+const news = (await getNews()).slice(0, 4);
+const dateFmt = new Intl.DateTimeFormat(lang === 'tr' ? 'tr-TR' : 'en-GB', { month: 'short', year: 'numeric' });
+---
+
+<Base lang={lang} altPath={routes[lang === 'tr' ? 'en' : 'tr'].home}>
+  <section class="hero wrap">
+    <div class="hero-text">
+      <p class="eyebrow">{s.affiliation}</p>
+      <h1>{s.heroTitle}</h1>
+      <p class="lead">{s.heroText}</p>
+      <div class="actions">
+        <a class="btn primary" href={url(r.projects)}>{s.nav.projects}</a>
+        <a class="btn" href={url(r.people)}>{s.meetTeam}</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <Image src={mole} alt="" width={420} loading="eager" />
+    </div>
+  </section>
+
+  <section class="section wrap focus">
+    <h2 class="visually-hidden">{s.focusTitle}</h2>
+    <ol>
+      {
+        s.focus.map(([title, text], i) => (
+          <li>
+            <span class="num">0{i + 1}</span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head">
+      <h2>{s.featuredProjects}</h2>
+      <a class="arrow-link" href={url(r.projects)}>{s.allProjects}</a>
+    </div>
+    <div class="project-grid">
+      {featured.map((project) => <ProjectCard project={project} lang={lang} />)}
+    </div>
+  </section>
+
+  <section class="section wrap team">
+    <div class="section-head">
+      <h2>{s.team}</h2>
+      <a class="arrow-link" href={url(r.people)}>{s.meetTeam}</a>
+    </div>
+    <ul class="faces">
+      {
+        people.map((p) => (
+          <li>
+            <a href={url(`${r.people}/${p.id}`)}>
+              <Avatar name={p.data.name} photo={p.data.photo} size={112} />
+              <span class="face-name">{p.data.name}</span>
+              <span class="face-role">{p.data.title ? t(p.data.title, lang) : s.roleSingle[p.data.role]}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section wrap split">
+    <div>
+      <div class="section-head">
+        <h2>{s.recentPubs}</h2>
+        <a class="arrow-link" href={url(r.publications)}>{s.allPubs}</a>
+      </div>
+      <ul class="pubs">
+        {pubs.map((pub) => <PublicationItem pub={pub} labNames={labNames} showYear />)}
+      </ul>
+    </div>
+    {
+      news.length > 0 && (
+        <aside>
+          <div class="section-head">
+            <h2>{s.news}</h2>
+          </div>
+          <ul class="news">
+            {news.map((n) => (
+              <li>
+                <time datetime={n.data.date.toISOString()}>{dateFmt.format(n.data.date)}</time>
+                <p>
+                  {n.data.url ? (
+                    <a href={url(n.data.url)} target={/^https?:/.test(n.data.url) ? '_blank' : undefined} rel="noopener">
+                      {t(n.data.text, lang)}
+                    </a>
+                  ) : (
+                    t(n.data.text, lang)
+                  )}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )
+    }
+  </section>
+</Base>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 3rem;
+    padding-block: clamp(3.5rem, 9vw, 7rem) clamp(2.5rem, 6vw, 4.5rem);
+  }
+  .hero h1 {
+    margin-top: 1.25rem;
+    max-width: 16ch;
+  }
+  .hero .lead {
+    margin-top: 1.5rem;
+  }
+  .hero-art {
+    justify-self: end;
+    position: relative;
+  }
+  .hero-art::before {
+    content: '';
+    position: absolute;
+    inset: 12% 0 -4% 8%;
+    background: radial-gradient(closest-side, var(--accent-soft), transparent);
+    z-index: -1;
+  }
+  .hero-art img {
+    width: min(360px, 100%);
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.7rem 1.2rem;
+    font-size: 0.925rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--ink);
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .btn:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+  .btn.primary {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bg);
+  }
+  .btn.primary:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .focus {
+    padding-block: 2.5rem;
+  }
+  .focus ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  .focus li {
+    border-top: 1px solid var(--ink);
+    padding-top: 1rem;
+  }
+  .num {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .focus h3 {
+    font-size: 1.2rem;
+    margin-block: 0.35rem 0.5rem;
+  }
+  .focus p {
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .faces {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(116px, 1fr));
+    gap: 2rem 1.25rem;
+  }
+  .faces a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+  .faces :global(.avatar) {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.7rem;
+    font-size: 2rem;
+  }
+  .face-name {
+    font-weight: 550;
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+  .face-role {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 4rem;
+  }
+  .pubs,
+  .news {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .news li {
+    padding-block: 1rem;
+    border-top: 1px solid var(--line);
+  }
+  .news li:first-child {
+    border-top: 0;
+    padding-top: 1.1rem;
+  }
+  .news time {
+    font-size: 0.75rem;
+    font-weight: 550;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .news p {
+    font-size: 0.925rem;
+    margin-top: 0.25rem;
+  }
+
+  @media (max-width: 900px) {
+    .focus ol {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .split {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+  @media (max-width: 720px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .hero-art {
+      order: -1;
+      justify-self: start;
+    }
+    .hero-art img {
+      width: 120px;
+    }
+  }
+  @media (max-width: 520px) {
+    .focus ol {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>

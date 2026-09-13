@@ -1,0 +1,157 @@
+---
+import { Image } from 'astro:assets';
+import { getEntries, type CollectionEntry } from 'astro:content';
+import Avatar from './Avatar.astro';
+import mole from '../assets/mole-icon.png';
+import { routes, t, ui, url, type Lang } from '../i18n';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  lang: Lang;
+}
+
+const { project, lang } = Astro.props;
+const { data } = project;
+const s = ui[lang];
+const members = (await getEntries(data.members)).filter(Boolean);
+const href = url(`${routes[lang].projects}/${project.id}`);
+---
+
+<article class="card" data-status={data.status}>
+  <a class="cover" href={href} tabindex="-1" aria-hidden="true">
+    {
+      data.image ? (
+        <Image src={data.image} alt="" width={640} height={400} fit="cover" />
+      ) : (
+        <span class="cover-fallback">
+          <Image src={mole} alt="" width={120} />
+        </span>
+      )
+    }
+  </a>
+  <div class="body">
+    <div class="meta">
+      <span class="status" data-status={data.status}>{s.status[data.status]}</span>
+      <span class="muted">{data.years}</span>
+    </div>
+    <h3><a href={href}>{t(data.title, lang)}</a></h3>
+    <p class="summary">{t(data.summary, lang)}</p>
+    <div class="foot">
+      {
+        members.length > 0 && (
+          <ul class="members" aria-label={s.projectTeam}>
+            {members.slice(0, 5).map((m) => (
+              <li title={m.data.name}>
+                <Avatar name={m.data.name} photo={m.data.photo} size={28} />
+              </li>
+            ))}
+          </ul>
+        )
+      }
+      {data.funding && <span class="funding">{t(data.funding, lang)}</span>}
+    </div>
+  </div>
+</article>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: calc(var(--radius) + 4px);
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-2px);
+  }
+  .cover {
+    display: block;
+    text-decoration: none;
+    aspect-ratio: 16 / 10;
+    background: #efece5;
+    overflow: hidden;
+  }
+  .cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .cover-fallback {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    background:
+      radial-gradient(circle at 30% 120%, var(--accent-soft), transparent 60%),
+      repeating-linear-gradient(-45deg, transparent 0 14px, #00000008 14px 15px),
+      #f2efe8;
+  }
+  .cover-fallback img {
+    width: 96px;
+    height: auto;
+    opacity: 0.16;
+    filter: grayscale(1);
+  }
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.25rem 1.35rem 1.35rem;
+    flex: 1;
+  }
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+  }
+  h3 a {
+    text-decoration: none;
+  }
+  h3 a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+  .card {
+    position: relative;
+  }
+  .summary {
+    font-size: 0.925rem;
+    color: var(--ink-2);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .foot {
+    margin-top: auto;
+    padding-top: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .members {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .members li + li {
+    margin-left: -6px;
+  }
+  .members :global(.avatar) {
+    border-radius: 50%;
+    border: 2px solid var(--surface);
+    font-size: 0.6rem;
+    font-family: var(--sans);
+    font-weight: 600;
+  }
+  .funding {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-align: right;
+  }
+</style>

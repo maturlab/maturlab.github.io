@@ -1,0 +1,91 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { routes, ui, type Lang } from '../i18n';
+import { getProjects } from '../lib/data';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const s = ui[lang];
+const projects = await getProjects();
+const count = (status: string) => projects.filter((p) => p.data.status === status).length;
+---
+
+<Base lang={lang} title={s.nav.projects} altPath={routes[lang === 'tr' ? 'en' : 'tr'].projects} current="projects">
+  <header class="page-head wrap">
+    <p class="eyebrow">MICE LAB</p>
+    <h1>{s.nav.projects}</h1>
+    <p class="lead">{s.projectsIntro}</p>
+  </header>
+
+  <section class="wrap list">
+    <div class="filters" role="group" aria-label="Filtre">
+      <button type="button" data-filter="all" aria-pressed="true">{s.filterAll} <span>{projects.length}</span></button>
+      <button type="button" data-filter="ongoing" aria-pressed="false">{s.status.ongoing} <span>{count('ongoing')}</span></button>
+      <button type="button" data-filter="completed" aria-pressed="false">{s.status.completed} <span>{count('completed')}</span></button>
+    </div>
+    <div class="grid">
+      {projects.map((project) => <ProjectCard project={project} lang={lang} />)}
+    </div>
+  </section>
+</Base>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const cards = document.querySelectorAll<HTMLElement>('.grid > [data-status]');
+  buttons.forEach((btn) =>
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      cards.forEach((card) => {
+        card.hidden = filter !== 'all' && card.dataset.status !== filter;
+      });
+    }),
+  );
+</script>
+
+<style>
+  .list {
+    padding-block: 2rem 5rem;
+  }
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .filters button {
+    font: inherit;
+    font-size: 0.875rem;
+    padding: 0.45rem 0.95rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink-2);
+    cursor: pointer;
+  }
+  .filters button span {
+    color: var(--muted);
+    margin-left: 0.25rem;
+    font-size: 0.8rem;
+  }
+  .filters button[aria-pressed='true'] {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bg);
+  }
+  .filters button[aria-pressed='true'] span {
+    color: #ffffff99;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .grid > [hidden] {
+    display: none;
+  }
+</style>

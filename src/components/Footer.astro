@@ -1,0 +1,71 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import { routes, ui, url, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const s = ui[lang];
+const r = routes[lang];
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap grid">
+    <div class="about">
+      <Image src={logo} alt="MICE LAB — Matur Integrated Conservation and Evolution Laboratory" width={260} />
+      <p class="muted">{s.affiliation}</p>
+    </div>
+    <ul class="links">
+      <li><a href={url(r.projects)}>{s.nav.projects}</a></li>
+      <li><a href={url(r.people)}>{s.nav.people}</a></li>
+      <li><a href={url(r.publications)}>{s.nav.publications}</a></li>
+      <li><a href={url(r.contact)}>{s.nav.contact}</a></li>
+    </ul>
+  </div>
+  <div class="wrap bottom">
+    <span>© {year} MICE LAB · {s.footerNote}</span>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--line);
+    margin-top: 2rem;
+    padding-top: 3rem;
+    font-size: 0.9rem;
+  }
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .about img {
+    width: 240px;
+    margin-bottom: 1rem;
+  }
+  .links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 0.4rem 2.5rem;
+    align-content: start;
+  }
+  .links a {
+    text-decoration: none;
+    color: var(--ink-2);
+  }
+  .bottom {
+    margin-top: 2.5rem;
+    padding-block: 1.25rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+</style>

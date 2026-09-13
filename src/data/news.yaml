@@ -1,0 +1,16 @@
+# HABERLER — ana sayfada en yeni 4 haber gösterilir.
+# Yeni haberi en üste ekleyin. "url" isteğe bağlıdır.
+
+- id: 2026-kor-fare-revizyon
+  date: 2026-06-19
+  text:
+    tr: "Anadolu kör farelerinin bütünleşik taksonomik revizyonu yayımlandı: 17’si yeni olmak üzere 33 tür tanımlandı."
+    en: "Our integrative taxonomic revision of Anatolian blind mole rats is out: 33 species recognised, 17 of them new."
+  url: https://doi.org/10.1556/1777.2026.00131
+
+- id: 2024-tunceli-arazi
+  date: 2024-09-02
+  text:
+    tr: "Tunceli Ovacık’taki kör fare arazi çalışmalarımız Anadolu Ajansı’nda haber oldu."
+    en: "Our blind mole rat fieldwork in Ovacık, Tunceli was featured by Anadolu Agency."
+  url: https://www.aa.com.tr/tr/yasam/zoolog-akademisyen-tunceli-kirsalinda-kor-farelerin-izini-suruyor/3319039

@@ -1,0 +1,163 @@
+---
+import Base from '../layouts/Base.astro';
+import PersonCard from '../components/PersonCard.astro';
+import Avatar from '../components/Avatar.astro';
+import { roleOrder, routes, t, ui, url, type Lang } from '../i18n';
+import { getPeople } from '../lib/data';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const s = ui[lang];
+const r = routes[lang];
+const people = await getPeople();
+const pis = people.filter((p) => p.data.role === 'pi');
+const groups = roleOrder
+  .filter((role) => role !== 'pi')
+  .map((role) => ({ role, members: people.filter((p) => p.data.role === role) }))
+  .filter((g) => g.members.length);
+const alumni = people.filter((p) => p.data.role === 'alumni');
+---
+
+<Base lang={lang} title={s.nav.people} altPath={routes[lang === 'tr' ? 'en' : 'tr'].people} current="people">
+  <header class="page-head wrap">
+    <p class="eyebrow">MICE LAB</p>
+    <h1>{s.nav.people}</h1>
+    <p class="lead">{s.peopleIntro}</p>
+  </header>
+
+  {
+    pis.map((pi) => (
+      <section class="wrap pi">
+        <a class="pi-photo" href={url(`${r.people}/${pi.id}`)} tabindex="-1" aria-hidden="true">
+          <Avatar name={pi.data.name} photo={pi.data.photo} size={360} />
+        </a>
+        <div>
+          <p class="eyebrow">{s.roles.pi}</p>
+          <h2>
+            <a href={url(`${r.people}/${pi.id}`)}>{pi.data.name}</a>
+          </h2>
+          {pi.data.title && <p class="pi-title">{t(pi.data.title, lang)}</p>}
+          {pi.data.bio && <p class="pi-bio">{t(pi.data.bio, lang).split(/\n\s*\n/)[0]}</p>}
+          <a class="arrow-link" href={url(`${r.people}/${pi.id}`)}>
+            {s.profile}
+          </a>
+        </div>
+      </section>
+    ))
+  }
+
+  {
+    groups.map((g) => (
+      <section class="wrap group">
+        <h2 class="group-title">
+          {s.roles[g.role]} <span>{g.members.length}</span>
+        </h2>
+        <div class="grid">
+          {g.members.map((p) => (
+            <PersonCard person={p} lang={lang} />
+          ))}
+        </div>
+      </section>
+    ))
+  }
+
+  {
+    alumni.length > 0 && (
+      <section class="wrap group">
+        <h2 class="group-title">
+          {s.roles.alumni} <span>{alumni.length}</span>
+        </h2>
+        <ul class="alumni">
+          {alumni.map((p) => (
+            <li>
+              <a href={url(`${r.people}/${p.id}`)}>{p.data.name}</a>
+              {p.data.graduated && <span class="muted">{p.data.graduated}</span>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+</Base>
+
+<style>
+  .pi {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    padding-block: 3.5rem;
+  }
+  .pi-photo :global(.avatar) {
+    width: 100%;
+    height: auto;
+  }
+  .pi h2 {
+    margin-top: 0.5rem;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  }
+  .pi h2 a {
+    text-decoration: none;
+  }
+  .pi-title {
+    color: var(--ink-2);
+    margin-top: 0.35rem;
+  }
+  .pi-bio {
+    margin-block: 1.25rem 1.5rem;
+    max-width: 62ch;
+    color: var(--ink-2);
+  }
+  .group {
+    padding-block: 3rem;
+    border-top: 1px solid var(--line);
+  }
+  .group:last-of-type {
+    padding-bottom: 5rem;
+  }
+  .group-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .group-title span {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    color: var(--muted);
+    vertical-align: middle;
+    margin-left: 0.35rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2.5rem 1.75rem;
+  }
+  .alumni {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    columns: 2 260px;
+  }
+  .alumni li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.6rem;
+    border-bottom: 1px solid var(--line);
+    break-inside: avoid;
+    font-size: 0.95rem;
+  }
+  .alumni a {
+    text-decoration: none;
+  }
+  @media (max-width: 640px) {
+    .pi {
+      grid-template-columns: 1fr;
+    }
+    .pi-photo {
+      max-width: 220px;
+    }
+  }
+</style>
