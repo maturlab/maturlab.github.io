@@ -74,7 +74,7 @@ const altLang = lang === 'tr' ? 'en' : 'tr';
           }
         </dl>
         {
-          members.length > 0 && (
+          (members.length > 0 || data.collaborators.length > 0) && (
             <>
               <h2 class="eyebrow">{s.projectTeam}</h2>
               <ul class="team">
@@ -94,14 +94,15 @@ const altLang = lang === 'tr' ? 'en' : 'tr';
                   </li>
                 ))}
               </ul>
-            </>
-          )
-        }
-        {
-          data.collaborators.length > 0 && (
-            <>
-              <h2 class="eyebrow">{s.collaborators}</h2>
-              <p class="collab">{data.collaborators.join(', ')}</p>
+              {
+                data.collaborators.length > 0 && (
+                  <ul class="others">
+                    {data.collaborators.map((name) => (
+                      <li>{name}</li>
+                    ))}
+                  </ul>
+                )
+              }
             </>
           )
         }
@@ -182,18 +183,21 @@ const altLang = lang === 'tr' ? 'en' : 'tr';
   .facts h2 {
     margin: 0 0 0.75rem;
   }
-  .facts h2 + p,
-  .team + h2 {
-    margin-top: 1.75rem;
+  .others {
+    list-style: none;
+    padding: 0;
+    margin: 0.9rem 0 0;
+    border-top: 1px solid var(--line);
   }
-  .collab {
-    font-size: 0.9rem;
-    color: var(--ink-2);
-    margin: 0 0 1.75rem;
+  .others li {
+    font-size: 0.925rem;
+    font-weight: 550;
+    padding-block: 0.5rem;
+    border-bottom: 1px solid var(--line);
   }
   .source {
     display: inline-block;
-    margin-top: 0.5rem;
+    margin-top: 1.75rem;
   }
   .team {
     list-style: none;

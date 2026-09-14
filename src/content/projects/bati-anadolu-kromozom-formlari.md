@@ -6,6 +6,6 @@ title:
 status: "completed"
 years: "2006–2007"
 funding: "TÜBİTAK"
-lead: "M. Sözen"
+lead: "Mustafa Sözen"
 link: "https://avesis.deu.edu.tr/proje/11fb4244-16c0-4f36-8f36-73c8d56421cb"
 ---

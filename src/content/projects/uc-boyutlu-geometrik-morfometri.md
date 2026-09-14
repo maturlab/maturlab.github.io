@@ -21,7 +21,7 @@ funding:
   tr: "TÜBİTAK 2559 · Sırbistan (MoESTD) İkili İşbirliği"
   en: "TÜBİTAK 2559 · Bilateral Cooperation with Serbia (MoESTD)"
 lead: "Prof. Dr. Ferhat Matur"
-collaborators: ["M. Sözen", "A. Yanchukov"]
+collaborators: ["Mustafa Sözen", "Vida Jojić", "Vanja Bugarski-Stanojević", "Nataša Barišić Klisarić", "Marko Đurakić", "Marko Đokić"]
 members: [ferhat-matur, omer-faruk-arslan]
 fellows: [omer-faruk-arslan]   # bursiyerler
 tags:

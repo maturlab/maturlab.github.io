@@ -8,6 +8,6 @@ years: "2006–2007"
 funding:
   tr: "Üniversite destekli proje"
   en: "University-funded project"
-lead: "M. Sözen"
+lead: "Mustafa Sözen"
 link: "https://avesis.deu.edu.tr/proje/313607c0-bdf5-4cfb-a4a8-171c1b9d8079"
 ---

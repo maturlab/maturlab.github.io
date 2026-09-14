@@ -8,6 +8,6 @@ years: "2004–2005"
 funding:
   tr: "Zonguldak Karaelmas Üniversitesi BAP"
   en: "Zonguldak Karaelmas University BAP"
-lead: "M. Sözen"
+lead: "Mustafa Sözen"
 link: "https://avesis.deu.edu.tr/proje/9e0071c8-8c01-4dc8-9abc-89c870e67228"
 ---
