@@ -1,4 +1,5 @@
 ---
+import Rich from './Rich.astro';
 import { Image } from 'astro:assets';
 import { getEntries, type CollectionEntry } from 'astro:content';
 import Avatar from './Avatar.astro';
@@ -30,8 +31,8 @@ const href = url(`${routes[lang].projects}/${project.id}`);
       <span class="status" data-status={data.status}>{s.status[data.status]}</span>
       <span class="muted">{data.years}</span>
     </div>
-    <h3><a href={href}>{t(data.title, lang)}</a></h3>
-    {data.summary && <p class="summary">{t(data.summary, lang)}</p>}
+    <h3><a href={href}><Rich text={t(data.title, lang)} /></a></h3>
+    {data.summary && <p class="summary"><Rich text={t(data.summary, lang)} /></p>}
     <div class="foot">
       {
         students.length > 0 ? (

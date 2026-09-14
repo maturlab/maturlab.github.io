@@ -1,4 +1,5 @@
 ---
+import Rich from '../components/Rich.astro';
 import Base from '../layouts/Base.astro';
 import PersonCard from '../components/PersonCard.astro';
 import Avatar from '../components/Avatar.astro';
@@ -42,7 +43,7 @@ const alumni = people.filter((p) => p.data.role === 'alumni');
             <a href={url(`${r.people}/${pi.id}`)}>{pi.data.name}</a>
           </h2>
           {pi.data.title && <p class="pi-title">{t(pi.data.title, lang)}</p>}
-          {pi.data.bio && <p class="pi-bio">{t(pi.data.bio, lang).split(/\n\s*\n/)[0]}</p>}
+          {pi.data.bio && <p class="pi-bio"><Rich text={t(pi.data.bio, lang).split(/\n\s*\n/)[0]} /></p>}
           <a class="arrow-link" href={url(`${r.people}/${pi.id}`)}>
             {s.profile}
           </a>

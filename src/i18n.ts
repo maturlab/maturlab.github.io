@@ -240,3 +240,17 @@ export function formatTitle(title: string): string {
   const escaped = title.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
   return escaped.replace(/_([^_]+)_/g, '<em>$1</em>');
 }
+
+// Metinlerde otomatik italik yazılacak cins adları ve tür epitetleri.
+// Yeni bir tür adı eklemek için ilgili listeye yazmanız yeterli.
+const GENERA = ['Nannospalax', 'Spalax', 'Myomimus', 'Blastocystis', 'Acomys', 'Apodemus', 'Myodes', 'Microtus', 'Talpa', 'Podarcis', 'Darevskia', 'Praomys', 'Dryomys', 'Spermophilus', 'Chionomys', 'Muscardinus'];
+const EPITHETS = ['xanthodon', 'leucodon', 'ehrenbergi', 'nehringi', 'cilicicus', 'roachi', 'setzeri', 'siculus', 'glareolus', 'laniger', 'delectorum', 'davidiana', 'taurensis', 'gud', 'avellanarius', 'uralensis', 'flavicollis'];
+
+/** Metni HTML için güvenli hale getirir ve cins/tür adlarını <em> ile italik yapar. */
+export function taxa(text: string): string {
+  const escaped = text.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  const ep = EPITHETS.join('|');
+  return escaped
+    .replace(new RegExp(`\\b(${GENERA.join('|')})(\\s(?:${ep}))?\\b`, 'g'), '<em>$1$2</em>')
+    .replace(new RegExp(`(^|[\\s(])([A-Z]\\.\\s(?:${ep}))\\b`, 'g'), '$1<em>$2</em>');
+}

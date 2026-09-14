@@ -19,6 +19,7 @@ Site [Astro](https://astro.build) ile yapılmıştır ve GitHub Pages'te ücrets
 | Haber eklemek | `src/data/news.yaml` |
 | Adres, e-posta, harita | `src/lib/site.ts` |
 | Menü ve sabit yazılar (TR/EN) | `src/i18n.ts` |
+| Otomatik italik yazılan tür adları | `src/i18n.ts` → `GENERA` ve `EPITHETS` listeleri |
 
 ### Yeni kişi eklemek
 

@@ -1,4 +1,5 @@
 ---
+import Rich from '../components/Rich.astro';
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
@@ -31,7 +32,7 @@ const dateFmt = new Intl.DateTimeFormat(lang === 'tr' ? 'tr-TR' : 'en-GB', { mon
     <div class="hero-text">
       <p class="eyebrow">{s.affiliation}</p>
       <h1>{s.heroTitle}</h1>
-      <p class="lead">{s.heroText}</p>
+      <p class="lead"><Rich text={s.heroText} /></p>
       <div class="actions">
         <a class="btn primary" href={url(r.projects)}>{s.nav.projects}</a>
         <a class="btn" href={url(r.people)}>{s.meetTeam}</a>
@@ -110,10 +111,10 @@ const dateFmt = new Intl.DateTimeFormat(lang === 'tr' ? 'tr-TR' : 'en-GB', { mon
                 <p>
                   {n.data.url ? (
                     <a href={url(n.data.url)} target={/^https?:/.test(n.data.url) ? '_blank' : undefined} rel="noopener">
-                      {t(n.data.text, lang)}
+                      <Rich text={t(n.data.text, lang)} />
                     </a>
                   ) : (
-                    t(n.data.text, lang)
+                    <Rich text={t(n.data.text, lang)} />
                   )}
                 </p>
               </li>

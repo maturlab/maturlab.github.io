@@ -1,0 +1,12 @@
+---
+import { taxa } from '../i18n';
+
+interface Props {
+  text: string;
+}
+
+// Tür adlarını italik gösteren metin parçası
+const { text } = Astro.props;
+---
+
+<Fragment set:html={taxa(text)} />

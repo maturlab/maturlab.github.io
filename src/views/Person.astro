@@ -1,4 +1,5 @@
 ---
+import Rich from '../components/Rich.astro';
 import type { CollectionEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Avatar from '../components/Avatar.astro';
@@ -87,7 +88,7 @@ const links = Object.entries(data.links).filter(([, href]) => href) as [string, 
           bio.length > 0 && (
             <section>
               <h2>{s.about}</h2>
-              <div class="prose">{bio.map((p) => <p>{p}</p>)}</div>
+              <div class="prose">{bio.map((p) => <p><Rich text={p} /></p>)}</div>
             </section>
           )
         }
@@ -117,7 +118,7 @@ const links = Object.entries(data.links).filter(([, href]) => href) as [string, 
                       <span class="where">{e.institution}</span>
                       {e.thesis && (
                         <span class="thesis">
-                          {s.thesis}: “{t(e.thesis, lang)}”
+                          {s.thesis}: “<Rich text={t(e.thesis, lang)} />”
                         </span>
                       )}
                     </div>
@@ -156,7 +157,7 @@ const links = Object.entries(data.links).filter(([, href]) => href) as [string, 
                   <li>
                     <span class="when">{a.year}</span>
                     <div>
-                      <strong>{t(a.title, lang)}</strong>
+                      <strong><Rich text={t(a.title, lang)} /></strong>
                     </div>
                   </li>
                 ))}
@@ -172,7 +173,7 @@ const links = Object.entries(data.links).filter(([, href]) => href) as [string, 
               <ul class="proj">
                 {projects.map((p) => (
                   <li>
-                    <a href={p.data.summary || p.data.description ? url(`${r.projects}/${p.id}`) : p.data.link}>{t(p.data.title, lang)}</a>
+                    <a href={p.data.summary || p.data.description ? url(`${r.projects}/${p.id}`) : p.data.link}><Rich text={t(p.data.title, lang)} /></a>
                     <span class="status" data-status={p.data.status}>
                       {p.data.fellows.some((f) => f.id === person.id) && `${s.fellow} · `}
                       {s.status[p.data.status]} · {p.data.years}

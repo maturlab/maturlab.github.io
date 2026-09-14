@@ -1,4 +1,5 @@
 ---
+import Rich from '../components/Rich.astro';
 import { Image } from 'astro:assets';
 import { getEntries, type CollectionEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
@@ -31,8 +32,8 @@ const altLang = lang === 'tr' ? 'en' : 'tr';
     <header class="head">
       <a class="back" href={url(r.projects)}>{s.backToProjects}</a>
       <span class="status" data-status={data.status}>{s.status[data.status]}</span>
-      <h1>{t(data.title, lang)}</h1>
-      {data.description && data.summary && <p class="lead">{t(data.summary, lang)}</p>}
+      <h1><Rich text={t(data.title, lang)} /></h1>
+      {data.description && data.summary && <p class="lead"><Rich text={t(data.summary, lang)} /></p>}
     </header>
 
     {
@@ -46,8 +47,8 @@ const altLang = lang === 'tr' ? 'en' : 'tr';
 
     <div class="layout">
       <div class="prose">
-        {paragraphs.map((p) => <p>{p}</p>)}
-        {tags.length > 0 && <ul class="chips">{tags.map((tag) => <li>{tag}</li>)}</ul>}
+        {paragraphs.map((p) => <p><Rich text={p} /></p>)}
+        {tags.length > 0 && <ul class="chips">{tags.map((tag) => <li><Rich text={tag} /></li>)}</ul>}
       </div>
 
       <aside class="facts">

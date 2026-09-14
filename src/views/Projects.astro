@@ -1,4 +1,5 @@
 ---
+import Rich from '../components/Rich.astro';
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { routes, t, ui, url, type Lang } from '../i18n';
@@ -49,10 +50,10 @@ const hasPage = (p: (typeof projects)[number]) => Boolean(p.data.description || 
                 <span class="what">
                   {href ? (
                     <a href={href} target={hasPage(p) ? undefined : '_blank'} rel="noopener">
-                      {t(p.data.title, lang)}
+                      <Rich text={t(p.data.title, lang)} />
                     </a>
                   ) : (
-                    t(p.data.title, lang)
+                    <Rich text={t(p.data.title, lang)} />
                   )}
                 </span>
                 <span class="who">
@@ -84,10 +85,10 @@ const hasPage = (p: (typeof projects)[number]) => Boolean(p.data.description || 
               <span class="what">
                 {p.data.link ? (
                   <a href={p.data.link} target="_blank" rel="noopener">
-                    {t(p.data.title, lang)}
+                    <Rich text={t(p.data.title, lang)} />
                   </a>
                 ) : (
-                  t(p.data.title, lang)
+                  <Rich text={t(p.data.title, lang)} />
                 )}
               </span>
               <span class="who">{t(p.data.funding, lang)}</span>
