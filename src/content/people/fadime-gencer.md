@@ -2,7 +2,7 @@
 name: Fadime Gencer
 role: phd   # phd | msc | bsc | alumni
 # photo: ./fotograflar/fadime-gencer.jpg
-# email: ad.soyad@ogr.deu.edu.tr
+email: fadime.gencer.eco@gmail.com
 citationNames: []   # yayınlarda adı nasıl geçiyor, ör. ["Arslan ÖF"]
 order: 13
 

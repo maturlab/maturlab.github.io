@@ -2,7 +2,7 @@
 name: Yağmur Gürsoy
 role: msc   # phd | msc | bsc | alumni
 # photo: ./fotograflar/yagmur-gursoy.jpg
-# email: ad.soyad@ogr.deu.edu.tr
+email: agmurgursoy131@gmail.com
 citationNames: []   # yayınlarda adı nasıl geçiyor, ör. ["Arslan ÖF"]
 order: 12
 

@@ -1,25 +1,25 @@
 // Laboratuvarın genel iletişim bilgileri. Değiştirmek için sadece bu dosyayı düzenleyin.
 export const site = {
-  email: 'ferhat.matur@deu.edu.tr',
-  phone: '+90 232 301 95 42',
+  email: 'ferhat.matur@gmail.com',
   address: {
     tr: [
-      'MICE LAB',
+      'Prof. Dr. Ferhat Matur',
       'Dokuz Eylül Üniversitesi, Fen Fakültesi',
-      'Biyoloji Bölümü',
+      'Biyoloji Bölümü, Öğretim Üyeleri Binası',
       'Tınaztepe Yerleşkesi, 35390 Buca / İzmir',
     ],
     en: [
-      'MICE LAB',
+      'Prof. Dr. Ferhat Matur',
       'Dokuz Eylül University, Faculty of Science',
-      'Department of Biology',
+      'Department of Biology, Faculty Members Building',
       'Tınaztepe Campus, 35390 Buca / İzmir, Türkiye',
     ],
   },
-  // Haritadaki işaretin konumu (Google Haritalar'da sağ tıklayıp koordinatları kopyalayabilirsiniz)
+  // Haritadaki işaretin konumu: DEÜ Tınaztepe Yerleşkesi, Öğretim Üyeleri Binası
+  // (Google Haritalar'da sağ tıklayıp koordinatları kopyalayabilirsiniz)
   map: {
-    lat: 38.3697,
-    lon: 27.2058,
-    bbox: '27.1958,38.3647,27.2158,38.3747',
+    lat: 38.36810,
+    lon: 27.20369,
+    bbox: '27.19969,38.36560,27.20769,38.37060',
   },
 };
