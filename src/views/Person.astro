@@ -46,7 +46,14 @@ const links = Object.entries(data.links).filter(([, href]) => href) as [string, 
       <aside class="side">
         <Avatar name={data.name} photo={data.photo} size={320} />
         <ul class="contact">
-          {data.email && <li><a href={`mailto:${data.email}`}>{data.email}</a></li>}
+          {
+            data.email && (
+              <li class="email">
+                <span class="label">{s.email}</span>
+                <a href={`mailto:${data.email}`}>{data.email}</a>
+              </li>
+            )
+          }
           {
             links.map(([key, href]) => (
               <li>
@@ -234,6 +241,21 @@ const links = Object.entries(data.links).filter(([, href]) => href) as [string, 
   .contact span {
     color: var(--muted);
     font-size: 0.75rem;
+  }
+  .contact .label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.1rem;
+  }
+  .contact .email a {
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .contact .email a:hover {
+    text-decoration: underline;
   }
   .cv {
     display: block;

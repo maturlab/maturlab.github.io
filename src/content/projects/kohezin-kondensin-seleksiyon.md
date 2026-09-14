@@ -17,7 +17,7 @@ description:
     The project investigates the selection pressure on genes of these complexes using comparative genomic and molecular evolution approaches.
 status: "ongoing"
 years: "2024–2027"
-funding: "TÜBİTAK 1001"
+funding: "TÜBİTAK 1001 · 124Z079"
 lead: "Prof. Dr. Ferhat Matur"
 collaborators: ["P. Bozaykut Eker", "O. Yanchukov", "S. Baykal Köse"]
 members: [ferhat-matur, basak-esgin]
