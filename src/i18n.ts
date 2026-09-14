@@ -50,7 +50,7 @@ export const ui = {
     affiliation: 'Dokuz Eylül Üniversitesi · Fen Fakültesi · Biyoloji Bölümü',
     heroTitle: 'Memelilerde evrim, çeşitlilik ve koruma.',
     heroText:
-      'Körfareler (Nannospalax) başta olmak üzere Anadolu’nun kemirgenlerini kromozomdan genoma, sahadan laboratuvara kadar inceliyoruz. Türlerin nasıl ortaya çıktığını ve çevrelerine nasıl uyum sağladığını araştırıyor, endemik ve nesli tehlike altındaki türlerin korunması için bilimsel temel oluşturuyoruz. Kemirgenlerin taşıdığı etkenlerin insan ve ekosistem sağlığıyla ilişkisini de Tek Sağlık yaklaşımıyla ele alıyoruz.',
+      'Körfare (Nannospalax) başta olmak üzere Anadolu’nun kemirgenlerini kromozomdan genoma, sahadan laboratuvara kadar inceliyoruz. Türlerin nasıl ortaya çıktığını ve çevrelerine nasıl uyum sağladığını araştırıyor, endemik ve nesli tehlike altındaki türlerin korunması için bilimsel temel oluşturuyoruz. Kemirgenlerin taşıdığı etkenlerin insan ve ekosistem sağlığıyla ilişkisini de Tek Sağlık yaklaşımıyla ele alıyoruz.',
     focusTitle: 'Araştırma alanları',
     focus: [
       ['Sitogenetik ve kromozomal evrim', 'Kromozom bantlama ve kromozomal yeniden düzenlenmelerin tür oluşumundaki rolü.'],

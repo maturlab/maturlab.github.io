@@ -8,7 +8,7 @@ summary:
   en: "Investigating the selection pressure acting on cohesin and condensin genes, which organise chromosomes, in chromosomally hyper-diverse blind mole rats."
 description:
   tr: |
-    Kohezin ve kondensin, hücre bölünmesi sırasında kromozomların düzenlenmesini ve doğru şekilde ayrılmasını sağlayan protein kompleksleridir. Körfareler, çok sayıda kromozomal yeniden düzenlenme gösteren sitotipleriyle bu genlerin evrimini incelemek için eşsiz bir model sunar.
+    Kohezin ve kondensin, hücre bölünmesi sırasında kromozomların düzenlenmesini ve doğru şekilde ayrılmasını sağlayan protein kompleksleridir. Körfare, çok sayıda kromozomal yeniden düzenlenme gösteren sitotipleriyle bu genlerin evrimini incelemek için eşsiz bir model sunar.
 
     Projede bu komplekslere ait genler üzerindeki seleksiyon baskısı karşılaştırmalı genomik ve moleküler evrim yöntemleriyle araştırılmaktadır.
   en: |
