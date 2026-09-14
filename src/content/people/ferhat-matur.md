@@ -4,7 +4,7 @@ role: pi
 title:
   tr: Profesör · Moleküler Biyoloji Anabilim Dalı Başkanı
   en: Professor · Head of the Division of Molecular Biology
-# photo: ./fotograflar/ferhat-matur.jpg
+photo: ./fotograflar/ferhat-matur.jpg
 email: ferhat.matur@deu.edu.tr
 citationNames: ["Matur F"]
 order: 1

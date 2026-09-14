@@ -1,7 +1,7 @@
 ---
 name: Başak Esgin
 role: msc   # phd | msc | bsc | alumni
-# photo: ./fotograflar/basak-esgin.jpg
+photo: ./fotograflar/basak-esgin.jpg
 # email: ad.soyad@ogr.deu.edu.tr
 citationNames: []   # yayınlarda adı nasıl geçiyor, ör. ["Arslan ÖF"]
 order: 11

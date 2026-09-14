@@ -26,7 +26,7 @@ const items = [
       <Image src={mole} alt="" width={44} height={Math.round((44 * mole.height) / mole.width)} loading="eager" />
       <span class="brand-text">
         <span class="brand-name">MICE LAB</span>
-        <span class="brand-sub">{s.labFullName}</span>
+        <span class="brand-sub">{ui.en.labFullName}</span>
       </span>
     </a>
 
@@ -41,13 +41,12 @@ const items = [
             </li>
           ))
         }
-        <li class="lang">
-          <a href={url(altPath)} hreflang={lang === 'tr' ? 'en' : 'tr'} title={s.otherLangLabel}>
-            {s.otherLang}
-          </a>
-        </li>
       </ul>
     </nav>
+
+    <a class="lang" href={url(altPath)} hreflang={lang === 'tr' ? 'en' : 'tr'} title={s.otherLangLabel}>
+      {s.otherLang}
+    </a>
   </div>
 </header>
 
@@ -62,13 +61,15 @@ const items = [
     border-bottom: 1px solid var(--line);
   }
   .bar {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 'brand nav lang';
     align-items: center;
-    justify-content: space-between;
     gap: 1.5rem;
     min-height: 72px;
   }
   .brand {
+    grid-area: brand;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -81,6 +82,7 @@ const items = [
   .brand img {
     width: 44px;
     height: auto;
+    flex: none;
   }
   .brand-text {
     display: flex;
@@ -97,6 +99,10 @@ const items = [
     color: var(--muted);
     max-width: 30ch;
   }
+  nav {
+    grid-area: nav;
+    justify-self: end;
+  }
   nav ul {
     display: flex;
     align-items: center;
@@ -105,7 +111,8 @@ const items = [
     margin: 0;
     padding: 0;
   }
-  nav a {
+  nav a,
+  .lang {
     display: block;
     padding: 0.45rem 0.75rem;
     font-size: 0.925rem;
@@ -114,7 +121,8 @@ const items = [
     color: var(--ink-2);
     border-radius: 6px;
   }
-  nav a:hover {
+  nav a:hover,
+  .lang:hover {
     color: var(--ink);
     background: #0000000a;
   }
@@ -124,41 +132,47 @@ const items = [
     border-radius: 0;
   }
   .lang {
-    margin-left: 0.5rem;
-    padding-left: 0.75rem;
-    border-left: 1px solid var(--line);
-  }
-  .lang a {
+    grid-area: lang;
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.05em;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.3rem 0.7rem;
   }
 
-  @media (max-width: 860px) {
-    .brand-sub {
-      display: none;
-    }
-  }
-  @media (max-width: 640px) {
+  @media (max-width: 900px) {
     .bar {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0;
-      padding-block: 0.6rem 0;
+      grid-template-columns: 1fr auto;
+      grid-template-areas:
+        'brand lang'
+        'nav nav';
+      gap: 0.35rem 1rem;
+      padding-block: 0.65rem 0;
+      min-height: 0;
     }
     .brand img {
-      width: 36px;
+      width: 38px;
+    }
+    .brand-sub {
+      font-size: 0.68rem;
+      max-width: none;
     }
     nav {
+      justify-self: stretch;
       margin-inline: calc(var(--gutter) * -1);
       overflow-x: auto;
       scrollbar-width: none;
     }
+    nav::-webkit-scrollbar {
+      display: none;
+    }
     nav ul {
-      padding-inline: calc(var(--gutter) - 0.75rem);
-      padding-block: 0.25rem;
+      padding-inline: calc(var(--gutter) - 0.6rem);
+      padding-block: 0.15rem;
     }
     nav a {
+      padding: 0.5rem 0.6rem;
       white-space: nowrap;
     }
   }
