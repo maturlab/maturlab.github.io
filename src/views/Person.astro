@@ -45,25 +45,27 @@ const links = Object.entries(data.links).filter(([, href]) => href) as [string, 
     <div class="layout">
       <aside class="side">
         <Avatar name={data.name} photo={data.photo} size={320} />
-        <ul class="contact">
-          {
-            data.email && (
-              <li class="email">
-                <span class="label">{s.email}</span>
-                <a href={`mailto:${data.email}`}>{data.email}</a>
-              </li>
-            )
-          }
-          {
-            links.map(([key, href]) => (
-              <li>
-                <a href={href} target="_blank" rel="noopener">
-                  {linkLabels[key]} <span aria-hidden="true">↗</span>
-                </a>
-              </li>
-            ))
-          }
-        </ul>
+        {
+          (data.email || links.length > 0) && (
+            <div class="contact-block">
+              <h2 class="contact-title">{s.nav.contact}</h2>
+              <ul class="contact">
+                {data.email && (
+                  <li class="email">
+                    <a href={`mailto:${data.email}`}>{data.email}</a>
+                  </li>
+                )}
+                {links.map(([key, href]) => (
+                  <li>
+                    <a href={href} target="_blank" rel="noopener">
+                      {linkLabels[key]} <span aria-hidden="true">↗</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
         {
           data.cv && (
             <a class="cv" href={url(`/cv/${data.cv}`)} download>
@@ -224,14 +226,29 @@ const links = Object.entries(data.links).filter(([, href]) => href) as [string, 
     width: 100%;
     height: auto;
   }
+  .contact-block {
+    margin-top: 2rem;
+  }
+  .contact-title {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 0.6rem;
+    padding: 0;
+    border: 0;
+  }
   .contact {
     list-style: none;
     padding: 0;
-    margin: 1.25rem 0 0;
-    font-size: 0.875rem;
+    margin: 0;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--line);
   }
   .contact li {
-    padding-block: 0.5rem;
+    padding-block: 0.8rem;
     border-bottom: 1px solid var(--line);
   }
   .contact a {
@@ -241,25 +258,18 @@ const links = Object.entries(data.links).filter(([, href]) => href) as [string, 
   .contact span {
     color: var(--muted);
     font-size: 0.75rem;
-  }
-  .contact .label {
-    display: block;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 0.1rem;
+    margin-left: 0.15rem;
   }
   .contact .email a {
     font-weight: 500;
     color: var(--accent);
   }
-  .contact .email a:hover {
+  .contact a:hover {
     text-decoration: underline;
   }
   .cv {
     display: block;
-    margin-top: 1.25rem;
+    margin-top: 1.5rem;
     text-align: center;
     padding: 0.65rem 1rem;
     font-size: 0.875rem;
