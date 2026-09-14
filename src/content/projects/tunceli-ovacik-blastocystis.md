@@ -21,9 +21,7 @@ description:
     The results aim to support integrated surveillance and prevention strategies for human and animal health in shared ecosystems.
 status: "ongoing"
 years: "2026–2028"
-funding:
-  tr: "TÜBİTAK – AB COST"
-  en: "TÜBİTAK – EU COST"
+funding: "TÜBİTAK 1001 · 325S024"
 lead: "Prof. Dr. Ferhat Matur"
 collaborators: ["İ. M. A. Öktem", "F. Doğruman Al", "E. Keskin", "U. Eliiyi"]
 members: [ferhat-matur, yagmur-gursoy]
