@@ -4,15 +4,15 @@ export const site = {
   address: {
     tr: [
       'Prof. Dr. Ferhat Matur',
-      'Dokuz Eylül Üniversitesi, Fen Fakültesi',
+      'Dokuz Eylül Üniversitesi',
       'Biyoloji Bölümü, Öğretim Üyeleri Binası',
-      'Tınaztepe Yerleşkesi, 35390 Buca / İzmir',
+      'Merkez Kampüs, 35390 Buca / İzmir',
     ],
     en: [
       'Prof. Dr. Ferhat Matur',
-      'Dokuz Eylül University, Faculty of Science',
+      'Dokuz Eylül University',
       'Department of Biology, Faculty Members Building',
-      'Tınaztepe Campus, 35390 Buca / İzmir, Türkiye',
+      'Main Campus, 35390 Buca / İzmir, Türkiye',
     ],
   },
   // Haritadaki işaretin konumu: DEÜ Tınaztepe Yerleşkesi, Öğretim Üyeleri Binası
