@@ -214,3 +214,9 @@ p {
 a:has(.avatar) {
   text-decoration: none;
 }
+
+/* İtalik düzeltmesi: yatık harflerin parantez ve tırnaklara yapışmasını önler */
+em {
+  padding-left: 0.04em;
+  padding-right: 0.1em;
+}
