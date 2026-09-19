@@ -41,6 +41,10 @@ const people = defineCollection({
         .array(z.object({ position: text, institution: z.string(), years: z.string() }))
         .default([]),
       awards: z.array(z.object({ title: text, year: z.string() })).default([]),
+      // Bilimsel aktiviteler: staj, kongre sunumu, yaz okulu vb.
+      activities: z
+        .array(z.object({ title: text, where: text.optional(), detail: text.optional(), date: text }))
+        .default([]),
       links: z
         .object({
           scholar: z.string().optional(),

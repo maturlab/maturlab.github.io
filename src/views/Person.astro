@@ -167,6 +167,36 @@ const links = Object.entries(data.links).filter(([, href]) => href) as [string, 
         }
 
         {
+          data.activities.length > 0 && (
+            <section>
+              <h2>{s.activities}</h2>
+              <ol class="timeline">
+                {data.activities.map((a) => (
+                  <li>
+                    <span class="when">{t(a.date, lang)}</span>
+                    <div>
+                      <strong>
+                        <Rich text={t(a.title, lang)} />
+                      </strong>
+                      {a.where && (
+                        <span class="where">
+                          <Rich text={t(a.where, lang)} />
+                        </span>
+                      )}
+                      {a.detail && (
+                        <span class="thesis">
+                          <Rich text={t(a.detail, lang)} />
+                        </span>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )
+        }
+
+        {
           projects.length > 0 && (
             <section>
               <h2>{s.projects}</h2>
