@@ -2,7 +2,7 @@
 name: Nisa Dalar
 role: bsc   # phd | msc | bsc | alumni
 photo: ./fotograflar/nisa-dalar.jpg
-# email: ad.soyad@ogr.deu.edu.tr
+email: dalarnisa@gmail.com
 citationNames: []   # yayınlarda adı nasıl geçiyor, ör. ["Dalar N"]
 order: 16
 

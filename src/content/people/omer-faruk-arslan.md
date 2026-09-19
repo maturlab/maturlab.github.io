@@ -2,7 +2,7 @@
 name: Ömer Faruk Arslan
 role: msc   # phd | msc | bsc | alumni
 photo: ./fotograflar/omer-faruk-arslan.jpg
-# email: ad.soyad@ogr.deu.edu.tr
+email: farukarslan.v@gmail.com
 citationNames: []   # yayınlarda adı nasıl geçiyor, ör. ["Arslan ÖF"]
 order: 10
 
