@@ -10,11 +10,11 @@ bio:
   tr: |
     Dokuz Eylül Üniversitesi Biyoloji Bölümü’nde lisans eğitimime devam ederken, aynı zamanda Fizik Bölümü’nde çift anadal yapıyorum. Akademik ilgimin merkezinde, canlı sistemlerdeki fiziksel süreçlerin nasıl işlediğini ve var olan mekanizmaların hayvan davranışına etkisini anlamak yer alıyor. Bu ilgim doğrultusunda manyetoresepsiyon alanına yöneldim. Bu mekanizmanın tür içindeki bireysel varyasyonlarını, farklı canlı gruplarında nasıl ortaya çıktığını ve hangi biyofiziksel süreçlerle hayvan davranışına yansıdığını anlamaya odaklandım.
 
-    Üniversitedeki ilk yılımdan bu yana Prof. Dr. Ferhat Matur ile çalışıyorum. Bu süreçte evrimsel biyoloji üzerine yoğun okumalar yaptım ve farklı canlı gruplarında, özellikle kuşlarda ve kemiricilerde, manyetoresepsiyon mekanizmalarını araştırdım.
+    Üniversitedeki ilk yılımdan bu yana Prof. Dr. Ferhat Matur ile çalışıyorum. Bu süreçte evrim üzerine okumalar yaptım ve farklı canlı gruplarında, özellikle kuşlarda ve kemiricilerde, manyetoresepsiyon mekanizmalarını araştırdım.
   en: |
     I am an undergraduate student in the Department of Biology at Dokuz Eylül University, where I am also pursuing a double major in Physics. At the centre of my academic interests is understanding how physical processes work in living systems and how these mechanisms shape animal behaviour. This interest led me to magnetoreception. I focus on understanding individual variation in this mechanism within species, how it arises across different groups of organisms, and through which biophysical processes it is reflected in animal behaviour.
 
-    I have been working with Prof. Dr. Ferhat Matur since my first year at university. During this time, I have read extensively on evolutionary biology and studied magnetoreception mechanisms in different groups of organisms, particularly birds and rodents.
+    I have been working with Prof. Dr. Ferhat Matur since my first year at university. During this time, I have read about evolution and studied magnetoreception mechanisms in different groups of organisms, particularly birds and rodents.
 
 interests:
   tr: [Manyetoresepsiyon, Biyofizik, Hayvan davranışı, Evrimsel biyoloji]

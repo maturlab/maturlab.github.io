@@ -1,7 +1,7 @@
 ---
 name: Dilara Çağlayan
 role: msc   # phd | msc | bsc | alumni
-# photo: ./fotograflar/dilara-caglayan.jpg
+photo: ./fotograflar/dilara-caglayan.jpg
 # email: ad.soyad@ogr.deu.edu.tr
 citationNames: []   # yayınlarda adı nasıl geçiyor, ör. ["Arslan ÖF"]
 order: 15
