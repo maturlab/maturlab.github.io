@@ -1,11 +1,25 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { authorMatches } from '../i18n';
 
-const byOrderThenName = (a: CollectionEntry<'people'>, b: CollectionEntry<'people'>) =>
-  a.data.order - b.data.order || a.data.name.localeCompare(b.data.name, 'tr');
+// Kişiler önce role göre sıralanır: lab yöneticisi, doktora sonrası, doktora,
+// yüksek lisans, lisansüstü, lisans, mezun. Aynı roldekiler "order" alanına göre dizilir.
+const roleRank: Record<CollectionEntry<'people'>['data']['role'], number> = {
+  pi: 0,
+  postdoc: 1,
+  phd: 2,
+  msc: 3,
+  grad: 4,
+  bsc: 5,
+  alumni: 6,
+};
+
+const byRoleThenOrder = (a: CollectionEntry<'people'>, b: CollectionEntry<'people'>) =>
+  roleRank[a.data.role] - roleRank[b.data.role] ||
+  a.data.order - b.data.order ||
+  a.data.name.localeCompare(b.data.name, 'tr');
 
 export async function getPeople() {
-  return (await getCollection('people', (p) => !p.data.draft)).sort(byOrderThenName);
+  return (await getCollection('people', (p) => !p.data.draft)).sort(byRoleThenOrder);
 }
 
 export async function getProjects() {
